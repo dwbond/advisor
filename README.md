@@ -22,5 +22,7 @@ Setup
 To-do
 ---
 
+NOTE: Most of the musings about how the project will work are in a text file alongside the views and models. Please see if you can follow at all what I'm talking about.
+
 About GMU SRCT
 ---

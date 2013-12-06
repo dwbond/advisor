@@ -1,6 +1,9 @@
 ### in which we write pseudocodey algorithms and musings before they are used
 ### transferred to the views
 
+PROGRAM REQUIREMENTS
+#############################################
+
 CS112(prereq=[],coreq=[CS101,MATH113])
 
 edge case-- course is only required or available if a certain major is selected
@@ -45,19 +48,8 @@ def nextCourses(coursesTaken):
 
 nextCourses is all of the courses it is possible for you to take next
 
-once a user has selected the courses they want to take for the subsequent semester,
-this is saved as a trajectory
-I take it then that each semester is its own trajectory?
-
-how does one tell that things are broken when a trajectory is fucked up?
-users can modify their trajectories, or particularly in comparisons
-"do you have the prereqs and coreqs for everything now?"
-or will it kill off an entire line of the courses
-should only rewrite the trajectory of the furthest semester considered... then you
-can not fuck up the other ones?
-
-and then they should be able to share their trajectories so that it can be compared
-with other students... --will need to implement later
+GEN ED REQUIREMENTS
+#############################################
 
 this does NOT take into consideration geneds
 
@@ -74,6 +66,23 @@ def genedCheck(coursesTaken, genEdCourses):
 # then pass the allCourses through allPrereqCoreq? NOT COOL
 
 gen eds are also different depending on liberal arts or not
+
+OTHER THOUGHTS
+#############################################
+
+once a user has selected the courses they want to take for the subsequent semester,
+this is saved as a trajectory
+I take it then that each semester is its own trajectory?
+
+how does one tell that things are broken when a trajectory is fucked up?
+users can modify their trajectories, or particularly in comparisons
+"do you have the prereqs and coreqs for everything now?"
+or will it kill off an entire line of the courses
+should only rewrite the trajectory of the furthest semester considered... then you
+can not fuck up the other ones?
+
+and then they should be able to share their trajectories so that it can be compared
+with other students... --will need to implement later
 
 should be able to point out "by permission of instructor"
 
