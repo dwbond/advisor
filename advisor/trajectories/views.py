@@ -3,6 +3,10 @@ from trajectories.models import Course, Trajectory, Student
 
 # other functions
 
+# the hard function
+
+
+
 # page render functions
 
 # homepage, sign in to save or compare multiple options

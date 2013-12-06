@@ -8,6 +8,18 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
+
+class Program(BaseModel):
+
+    isBA = models.BooleanField()
+    # geneds are different if BA or BS 
+   
+    class Meta:
+        ordering = ('name',)
+
+    def __unicode__(self):
+        return self.name
+
 class Course(BaseModel):
 
     department = models.CharField(max_length = 5)
@@ -17,6 +29,8 @@ class Course(BaseModel):
     # CRN
     # section number
     
+    # Course may need Program-specific information
+
     slug = models.SlugField(max_length = 50)
 
     # ordering

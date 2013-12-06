@@ -46,8 +46,18 @@ def nextCourses(coursesTaken):
 nextCourses is all of the courses it is possible for you to take next
 
 once a user has selected the courses they want to take for the subsequent semester,
-the tables will have to be updated accordingly?
-(oh dear-- how shall this be done?)
+this is saved as a trajectory
+I take it then that each semester is its own trajectory?
+
+how does one tell that things are broken when a trajectory is fucked up?
+users can modify their trajectories, or particularly in comparisons
+"do you have the prereqs and coreqs for everything now?"
+or will it kill off an entire line of the courses
+should only rewrite the trajectory of the furthest semester considered... then you
+can not fuck up the other ones?
+
+and then they should be able to share their trajectories so that it can be compared
+with other students... --will need to implement later
 
 this does NOT take into consideration geneds
 
@@ -56,10 +66,15 @@ def genedCheck(coursesTaken, genEdCourses):
   diff coursesTaken, genEdCourses
   overlap?
   yay
+
 # this might be problematic with courses where there are hierarchies, like science
 # or languages, but for everything else, no need to worry about prereq, coreq
 
 # users are able to select which courses they *want* to take for gen eds
 # then pass the allCourses through allPrereqCoreq? NOT COOL
 
+gen eds are also different depending on liberal arts or not
 
+should be able to point out "by permission of instructor"
+
+also, what if the user input is wrong? answer: this system just assumes that it's right
