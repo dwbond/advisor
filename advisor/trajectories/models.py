@@ -8,12 +8,18 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-
 class Program(BaseModel):
 
-    isBA = models.BooleanField()
-    # geneds are different if BA or BS 
-   
+    # major or minor or gened
+    programType = models.CharField()
+
+    # is BA, there are these geneds, if BA, those
+    degreeType = models.CharField()
+
+    # unless they're in the honors program
+    # and then there are separate geneds
+    honors = models.BooleanField()
+
     class Meta:
         ordering = ('name',)
 
@@ -22,20 +28,23 @@ class Program(BaseModel):
 
 class Course(BaseModel):
 
-    department = models.CharField(max_length = 5)
+    # ordering
+    prerequisites = models.ManyToManyField()
+    corequisites = models.ManyToManyField()
+
+    # basic course information
+    department = models.CharField(max_length = 150)
+    departmentAbbr = models.CharField(max_length = 5)
     courseNumber = models.CharField(max_length = 3)
 
     # available next semester?
     # CRN
     # section number
+    # professor
     
-    # Course may need Program-specific information
+    # Course may need program-specific information
 
     slug = models.SlugField(max_length = 50)
-
-    # ordering
-    prerequisites = models.ManyToManyField()
-    corequisites = models.ManyToManyField()
 
     # default sorting order in admin
     class Meta:

@@ -6,8 +6,6 @@ PROGRAM REQUIREMENTS
 
 CS112(prereq=[],coreq=[CS101,MATH113])
 
-edge case-- course is only required or available if a certain major is selected
-
 # user enters courses they have taken
 allCourses = [Every, Damn, Course]
 coursesTaken = [Courses, Student, Already, Has, Completed]
@@ -51,6 +49,10 @@ nextCourses is all of the courses it is possible for you to take next
 GEN ED REQUIREMENTS
 #############################################
 
+# I don't think even from a UX perspective that anyone would ever want to see all
+# of the geneds that they could concievably take a subseqent semester-- there would
+# be like eleventy billion of then
+
 # checks if you've taken a gened for a specific set of geneds (say, philosophy)
 def genedCheck(coursesTaken, genEdCourses):
   diff coursesTaken, genEdCourses
@@ -63,12 +65,24 @@ def genedCheck(coursesTaken, genEdCourses):
 # users are able to select which courses they *want* to take for gen eds
 # then pass the allCourses through allPrereqCoreq? NOT COOL
 
-gen eds are also different depending on liberal arts or not
+BEYOND PREREQ COREQ
+#############################################
+
+"Through 200 level"
+
+"At least 12 credits of xxx"
+
+"One of "these" and two of "those""
+
+"electives"
+
+"take two sequences of"
 
 OTHER THOUGHTS
 #############################################
 
 NO WAY TO CHECK ACCURACY OF USER INPUT
+this is important for modifying trajectories-- see below
 
 once a user has selected the courses they want to take for the subsequent semester,
 this is saved as a trajectory
@@ -87,3 +101,14 @@ with other students... --will need to implement later
 should be able to point out "by permission of instructor"
 
 also, what if the user input is wrong? answer: this system just assumes that it's right
+
+needs to limit the number of programs that can be selected-- there already is one, implicitly
+from a BA or BS selection, and then Honors?
+
+UX
+#############################################
+
+User arrives on homepage, selects program, (Honors College?) and is prompted to select
+already-completed courses.
+
+
