@@ -1,0 +1,65 @@
+### in which we write pseudocodey algorithms and musings before they are used
+### transferred to the views
+
+CS112(prereq=[],coreq=[CS101,MATH113])
+
+edge case-- course is only required or available if a certain major is selected
+
+# user enters courses they have taken
+allCourses = [Every, Damn, Course]
+coursesTaken = [Courses, Student, Already, Has, Completed]
+requiredCourses = [Courses, Required, For, The, Major]
+remainingRequiredCourses = []
+nextCourses = []
+
+# returns courses you have left for selected major
+def remainingCourses(requiredCourses):
+  for course in requiredCourses:
+    if not in coursesTaken:
+      course.append(remainingRequiredCourses)
+
+# returns courses that have a Course as either a prereq or coreq
+def allPrereqCoreq(course, remainingRequiredCourses):
+  allPrereqCoreq = []
+  for requiredCourse in remainingRequiredCourses:
+    if course is a prereq or coreq of requiredCourse
+      requiredCourse.append(allPrereqCoreq)
+  return allPrereqCoreq
+
+# all of the courses that have that course as a prereq or coreq
+# I think that the recursive issue is fixed-- it doesn't matter if there
+# are prereqs of prereqs because the class has already been taken
+# furthermore, you're not going to have to worry about whether or not
+# a course is 
+
+# returns courses you CAN take given what you've taken
+def nextCourses(coursesTaken):
+  for course in coursesTaken:
+    if prereqs in coursesTaken:
+      append prereqs to nextCourses
+    elif coreqs in coursesTaken:
+      append prereqs to nextCourses
+    else:
+      append allPrereqCoreq(course, remainingRequiredCourses) to nextCourses
+    return nextCourses
+
+nextCourses is all of the courses it is possible for you to take next
+
+once a user has selected the courses they want to take for the subsequent semester,
+the tables will have to be updated accordingly?
+(oh dear-- how shall this be done?)
+
+this does NOT take into consideration geneds
+
+# checks if you've taken a gened for a specific set of geneds (say, philosophy)
+def genedCheck(coursesTaken, genEdCourses):
+  diff coursesTaken, genEdCourses
+  overlap?
+  yay
+# this might be problematic with courses where there are hierarchies, like science
+# or languages, but for everything else, no need to worry about prereq, coreq
+
+# users are able to select which courses they *want* to take for gen eds
+# then pass the allCourses through allPrereqCoreq? NOT COOL
+
+
