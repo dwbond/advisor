@@ -51,8 +51,6 @@ nextCourses is all of the courses it is possible for you to take next
 GEN ED REQUIREMENTS
 #############################################
 
-this does NOT take into consideration geneds
-
 # checks if you've taken a gened for a specific set of geneds (say, philosophy)
 def genedCheck(coursesTaken, genEdCourses):
   diff coursesTaken, genEdCourses
@@ -69,6 +67,8 @@ gen eds are also different depending on liberal arts or not
 
 OTHER THOUGHTS
 #############################################
+
+NO WAY TO CHECK ACCURACY OF USER INPUT
 
 once a user has selected the courses they want to take for the subsequent semester,
 this is saved as a trajectory
