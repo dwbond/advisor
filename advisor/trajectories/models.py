@@ -64,21 +64,13 @@ class Program(BaseModel):
     def __unicode__(self):
         return self.name
 
-class Trajectory(BaseModel):
-
-    # Kind of want to overwrite "name" as optional
-
-    # Takes courses
-    potentialTrajectory = models.ManyToManyField('Course')
-
-    def get_absolute_url(self):
-        return 'my-trajectories/%s/' % self.slug
-
 # should inherit from the standard Django User Model
 class Student(BaseModel):
 
     alreadyTaken = models.ManyToManyField('Course')
-    trajectory = models.ManyToField()
+    trajectory = models.ManyToField('Trajectory')
+
+    # aka username, etc should all be here
 
     slug = models.SlugField(max_length = 50)
 
@@ -89,4 +81,19 @@ class Student(BaseModel):
         return self.name
 
     def get_absolute_url(self):
-        return '/%s/' % self.slug
+
+class Trajectory(BaseModel):
+
+    # Kind of want to overwrite "name" as optional
+
+    # Takes courses
+    potentialTrajectory = models.ManyToManyField('Course')
+
+    # this isn't exactly done correctly-- ideally courses should be elements
+    # of a list, not one created for each and every semester
+    semester = models.IntegerField()
+
+    def get_absolute_url(self):
+        return 'my-trajectories/%s/' % self.slug
+
+       return '/%s/' % self.slug
