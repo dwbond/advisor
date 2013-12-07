@@ -111,4 +111,18 @@ UX
 User arrives on homepage, selects program, (Honors College?) and is prompted to select
 already-completed courses.
 
+User then is then displayed a list of courses for their major that they are able to take next.
+Also displayed is are rectangles indicating whether or not each of the gen-ed requirements
+have been completed.
 
+If a gen-ed has not been completed, then they can select that button, which will retrieve all of
+the gen-eds that they could concievably take for that particular instance.
+
+The user then selects the classes that they intend to take for that semester.
+
+This is then completed for each subsequent semester, until there are no more classes to select.
+
+The user can save this trajectory.
+
+What if a user wants to modify their trajectory? They can select to go back to any semester, but
+it will delete their progress thus far for something.

@@ -8,29 +8,11 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-class Program(BaseModel):
-
-    # major or minor or gened
-    programType = models.CharField()
-
-    # is BA, there are these geneds, if BA, those
-    degreeType = models.CharField()
-
-    # unless they're in the honors program
-    # and then there are separate geneds
-    honors = models.BooleanField()
-
-    class Meta:
-        ordering = ('name',)
-
-    def __unicode__(self):
-        return self.name
-
 class Course(BaseModel):
 
     # ordering
-    prerequisites = models.ManyToManyField()
-    corequisites = models.ManyToManyField()
+    prerequisites = models.ManyToManyField('Course')
+    corequisites = models.ManyToManyField('Course')
 
     # basic course information
     department = models.CharField(max_length = 150)
@@ -56,14 +38,38 @@ class Course(BaseModel):
     def get_absolute_url(self):
         return '/courses/%s/' % self.slug
 
-class Trajectory(BaseModel):
+# gen eds are coursecollections in programs
+class CourseCollection(BaseModel):
 
-    # Unsure how to represent this 
+    # a number of courses
+    courses = ManyToManyField('Course')
+
+    # how many of those are required
+    numberOfCoursesReq = IntegerField()
+
+class Program(BaseModel):
+
+    # courseCollections
+    courseReqs =  ManyToManyField('CourseCollection')
+
+    # major or minor or gened
+    programType = models.CharField()
+
+    # is BA, BS, Honors
+    degreeType = models.CharField()
+
+    class Meta:
+        ordering = ('name',)
+
+    def __unicode__(self):
+        return self.name
+
+class Trajectory(BaseModel):
 
     # Kind of want to overwrite "name" as optional
 
     # Takes courses
-    potentialTrajectory = models.ManyToManyField()
+    potentialTrajectory = models.ManyToManyField('Course')
 
     def get_absolute_url(self):
         return 'my-trajectories/%s/' % self.slug
@@ -71,7 +77,7 @@ class Trajectory(BaseModel):
 # should inherit from the standard Django User Model
 class Student(BaseModel):
 
-    alreadyTaken = models.ManyToManyField()
+    alreadyTaken = models.ManyToManyField('Course')
     trajectory = models.ManyToField()
 
     slug = models.SlugField(max_length = 50)
