@@ -51,6 +51,8 @@ I've written some documentation in the docs folder about using the admin interfa
 To-do
 ---
 
+**First orders of business**
+
 * The views need a lot of work
 * The templates need a lot of work
 * The student models needs to support the Django User Model
@@ -58,6 +60,7 @@ To-do
 * Testing testing testing.
 
 **Pipe Dreams**
+
 * Making trajectories "public" within the system, so that they can be shared with other students.
 * Making trajectories "public" outside of the system, so that they can be shared on social and messaging sites.
 * Support departments to create sample trajectories for their students.
