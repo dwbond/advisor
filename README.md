@@ -19,10 +19,52 @@ Please visit the [SRCT Wiki](http://wiki.srct.gmu.edu/) for more information on 
 Setup
 ---
 
+To get started, you'll need the following installed:
+
+* [Python 2.7.3](http://www.python.org/download/)
+* [Django 1.6](https://www.djangoproject.com/download/)
+* [Git](http://git-scm.com/book/en/Getting-Started-Installing-Git/)
+* [Pip](http://www.pip-installer.org/en/latest/installing.html)
+* [virtualenv](http://www.virtualenv.org/en/latest/index.html#installation)
+
+Type the following commands in your terminal (if you're on Windows, [Cygwin](http://www.cygwin.com/) is recommended, or you can install a [virtual machine](https://www.virtualbox.org/wiki/Downloads) and install a distribution of [Linux](http://www.ubuntu.com/download/desktop) to it (select the 32 bit version).
+
+(also, ssh keys...)
+
+``bash``
+``git clone http://git.gmu.edu/srct/advisor.git``
+``cd advisor``
+``mkdir ~/.virtualenvs``
+``virtualenv ~/.virtualenvs/advisor``
+``source ~/.virtualenvs/advisor/bin/activate``
+``pip install -r requirements.txt``
+``create the database``
+``python manage.py syncdb`` (the username and password are just for your machine-- you can set it as merely "me" and "password" if you like)
+``python manage.py schemamigration --initial``
+``python manage.py migrate trajectories``
+``python manage.py runserver``
+
+Next, open your web broswer of choice, and go to http//:127.0.0.1:8000/. You won't see too much. You'll need to add the courses and programs to the database.
+
+I've written some documentation in the docs folder about using the admin interface and creating some models. Use the same username and password you set up when you did the `syncdb` command.
+
 To-do
 ---
 
-NOTE: Most of the musings about how the project will work are in a text file alongside the views and models. Please see if you can follow at all what I'm talking about.
+* The views need a lot of work
+* The templates need a lot of work
+* The student models needs to support the Django User Model
+* LDAP auth
+* Testing testing testing.
+
+**Pipe Dreams**
+* Making trajectories "public" within the system, so that they can be shared with other students.
+* Making trajectories "public" outside of the system, so that they can be shared on social and messaging sites.
+* Support departments to create sample trajectories for their students.
+* Identifying if courses are available in the semester desired, and if so, getting professor information, CRNs, and what have you.
+* An integrated "schedulizer"-type app for the classes that you've selected you want for that semester.
+
+NOTE: A lot of musings about how the project will work are in a text file alongside the views and models. Please see if you can follow at all what I'm talking about.
 
 About GMU SRCT
 ---
