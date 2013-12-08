@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render, render_to_response
 from trajectories.models import Course, Trajectory, Student
 
 # other functions
@@ -45,7 +45,7 @@ def nextCourses(coursesTaken, remainingReqCourses):
 #@login_required -- not sure how this part works
 def index(request):
 
-    return render_to_response('index.html', {
+    return render(request, 'index.html', {
 
     },
     )
@@ -53,7 +53,7 @@ def index(request):
 # student creates trajectory
 def makeTrajectory(request):
 
-    return render_to_repsonse('maketrajectory.html', {
+    return render(request, 'maketrajectory.html', {
     
     },
     )
@@ -61,7 +61,7 @@ def makeTrajectory(request):
 # just displays a page for the course
 def course(request, slug):
 
-    return render_to_response('course.html', {
+    return render(request, 'course.html', {
 
     },
     )
@@ -70,7 +70,7 @@ def course(request, slug):
 #@login_required
 def student(request, slug):
 
-    return render_to_response('student.html', {
+    return render(request, 'student.html', {
 
     },
     )
@@ -79,7 +79,7 @@ def student(request, slug):
 #@login_required
 def compare(request):
 
-    return render_to_response('compare.html', {
+    return render(request, 'compare.html', {
 
     },
     )
@@ -87,7 +87,7 @@ def compare(request):
 # SRCT, how to contribute information
 def about(request):
 
-    return render_to_response('about.html', {
+    return render(request, 'about.html', {
 
     },
     )
