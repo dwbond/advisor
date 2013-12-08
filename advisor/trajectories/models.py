@@ -18,6 +18,8 @@ class Course(BaseModel):
     department = models.CharField(max_length = 150)
     departmentAbbr = models.CharField(max_length = 5)
     courseNumber = models.CharField(max_length = 3)
+    courseDescription = models.TextField()
+    credits = models.IntegerField()
 
     # available next semester?
     # CRN
