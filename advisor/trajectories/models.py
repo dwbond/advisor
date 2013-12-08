@@ -1,7 +1,7 @@
 from django.db import models
 
 class BaseModel(models.Model):
-    created = models.DateTimeField('Created', auto_now_add=True, editable=False)_
+    created = models.DateTimeField('Created', auto_now_add=True, editable=False)
     last_modified = models.DateTimeField('Last Modified', auto_now=True)
     name = models.CharField(max_length = 100)
 
@@ -44,21 +44,21 @@ class Course(BaseModel):
 class CourseCollection(BaseModel):
 
     # a number of courses
-    courses = ManyToManyField('Course')
+    courses = models.ManyToManyField('Course')
 
     # how many of those are required
-    numberOfCoursesReq = IntegerField()
+    numberOfCoursesReq = models.IntegerField()
 
 class Program(BaseModel):
 
     # courseCollections
-    courseReqs =  ManyToManyField('CourseCollection')
+    courseReqs =  models.ManyToManyField('CourseCollection')
 
     # major or minor or gened
-    programType = models.CharField()
+    programType = models.CharField(max_length = 25)
 
     # is BA, BS, Honors
-    degreeType = models.CharField()
+    degreeType = models.CharField(max_length = 25)
 
     class Meta:
         ordering = ('name',)
@@ -70,7 +70,7 @@ class Program(BaseModel):
 class Student(BaseModel):
 
     alreadyTaken = models.ManyToManyField('Course')
-    trajectory = models.ManyToField('Trajectory')
+    trajectory = models.ManyToManyField('Trajectory')
 
     # aka username, etc should all be here
 
@@ -83,6 +83,7 @@ class Student(BaseModel):
         return self.name
 
     def get_absolute_url(self):
+        return self.name
 
 class Trajectory(BaseModel):
 
@@ -98,4 +99,4 @@ class Trajectory(BaseModel):
     def get_absolute_url(self):
         return 'my-trajectories/%s/' % self.slug
 
-       return '/%s/' % self.slug
+        return '/%s/' % self.slug
