@@ -50,6 +50,13 @@ def index(request):
     },
     )
 
+def makeTrajectory(request):
+
+    return render_to_repsonse('maketrajectory.html', {
+    
+    },
+    )
+
 # just displays a page for the course
 def course(request, slug):
 

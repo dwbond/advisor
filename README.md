@@ -53,6 +53,7 @@ To-do
 
 **First orders of business**
 
+* how do you make coreqs work? right now it assumes that a coreq has to come first, but that's obviously not how they work
 * The views need a lot of work
 * The templates need a lot of work
 * The student models needs to support the Django User Model
