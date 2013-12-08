@@ -40,8 +40,7 @@ Type the following commands in your terminal (if you're on Windows, [Cygwin](htt
 ``pip install -r requirements.txt``
 ``create the database``
 ``python manage.py syncdb`` (the username and password are just for your machine-- you can set it as merely "me" and "password" if you like)
-``python manage.py schemamigration --initial``
-``python manage.py migrate trajectories``
+``python manage.py schemamigration trajectories --initial``
 ``python manage.py runserver``
 
 Next, open your web broswer of choice, and go to http//:127.0.0.1:8000/. You won't see too much. You'll need to add the courses and programs to the database.

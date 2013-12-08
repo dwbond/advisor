@@ -32,8 +32,8 @@ def nextCourses(coursesTaken, remainingReqCourses):
          elif course.coreq not in coursesTaken:
              nextCourses.append(course)
          else:
-             possiblity = allPrereqCoreq(course, remainingReqCourses)
-             append nextCourses.append(possiblity)
+             possibility = allPrereqCoreq(course, remainingReqCourses)
+             nextCourses.append(possibility)
      return nextCourses
 
 # how does one deal with "you have to take the coreq at the same time?"

@@ -31,5 +31,5 @@ urlpatterns = patterns('trajectories.views',
     url(r'^$', 'about', name = 'about'),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin/doc/' include('django.contrib.admindocs.urls')),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
