@@ -8,7 +8,7 @@ SRCT Advisor
 
 <h2>Welcome to Advisor, a project of GMU SRCT.</h2></p>
 
-<p><h3>Advisor automates academic advising.* Build your trajectory to graduation, toy with new ideas, and compare your options. Just select the classes you've already taken, and follow the instructions to start visualizing the path to completing your degree.</h3></p>
+<p><h3>Advisor automates academic advising.* Build your trajectory to graduation, toy with new ideas, and compare your options. Select the classes you've already taken, and follow the instructions to start visualizing your way to the completion of your degree.</h3></p>
 
 <p><h4>Sign in with your GMU student username and password at the top to save your progress or compare multiple trajectories.</h4><p>
 
@@ -31,8 +31,11 @@ SRCT Advisor
       <div class="col-sm-5">
         <input type="text" class="form-control" id="Program" placeholder="Advanced Composition">
       </div>
+   <div class="col-sm-1">
+     <button type="button" class="btn btn-primary">+</button>
    </div>
-   <!-- not sure how to have a zillion of these fields keep on appearing -->
+ <!-- not sure how to have a zillion of these fields keep on appearing -->
+  </div>
   Select your program(s).
   <div class="form-group">
     <label for "Program" class="col-sm-2">Program</label>
@@ -40,13 +43,19 @@ SRCT Advisor
         <input type="text" class="form-control" id="Program" placeholder="Government and International Politics">
 	<!-- autocompletion would be awesome -->
     </div>
+     <div class="col-sm-1">
+      <button type="button" class="btn btn-primary">+</button>
+    </div>
   </div>
   Select your minor(s).
   <div class="form-group">
     <label for "Program" class="col-sm-2">Minor</label>
     <div class="col-sm-5">
       <input type="text" class="form-control" id="Minors" placeholder="Software Engineering">
-     </div>
+    </div>
+    <div class="col-sm-1">
+      <button type="button" class="btn btn-primary">+</button>
+    </div>
   </div>
   <!-- #cooljsideas for this and select program, have a new field slide out
   when one has been entered (2 for degree, 3 for minor)-->
@@ -54,8 +63,8 @@ SRCT Advisor
   <div class="form-group">
     <label for "degreeType" class="col-sm-2">Honors</label>
      <div class="col-sm-5">
-      <button type="button" class="btn btn-default btn-sm">Yes</button>
-      <button type="button" class="btn btn-primary btn-sm">No</button>
+      <button type="button" class="btn btn-default">Yes</button>
+      <button type="button" class="btn btn-primary">No</button>
      </div>
   </div>
   <div class="form-group">
@@ -66,5 +75,5 @@ SRCT Advisor
   </div>
 </form>
 <br />
-<p><h6>*Not intended as a replacement for formal academic advising through your department.</h6></p>
+<p><h6>*Not intended as a replacement for formal academic advising through your department. Currently only supports undergraduate programs.</h6></p>
 {% endblock %}
