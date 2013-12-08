@@ -13,7 +13,7 @@ urlpatterns = patterns('trajectories.views',
 
     # creating the trajectory
     # slug is the student's netid
-    url(r'^(?P<slug>[^\.]+)/create/', 'maketrajectory', name = 'maketrajectory'),
+    url(r'^(?P<slug>[^\.]+)/create/', 'makeTrajectory', name = 'maketrajectory'),
 
     # course
     # slug would be e.g. "CS211" or "ENGH302"
@@ -28,7 +28,7 @@ urlpatterns = patterns('trajectories.views',
     url(r'^(?P<slug>[^\.]+)/compare/$', 'compare', name = 'compare'),
 
     # about page
-    url(r'^$', 'about', name = 'about'),
+    url(r'^/about/', 'about', name = 'about'),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
