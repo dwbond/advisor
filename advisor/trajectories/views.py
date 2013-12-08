@@ -50,6 +50,7 @@ def index(request):
     },
     )
 
+# student creates trajectory
 def makeTrajectory(request):
 
     return render_to_repsonse('maketrajectory.html', {

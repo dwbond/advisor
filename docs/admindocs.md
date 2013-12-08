@@ -1,7 +1,7 @@
 Course
 ---
 
-The first thing that you'll want to create are Courses. Courses have basic information, like the courses' name, the department, the department's abbreviation, and the course number. They also have prerequisites and corequisites. These are key, and are the information that drive the entire program, so make sure that these are correct.
+The first thing that you'll want to create are Courses. Courses have basic information, like the courses' name, the department, the department's abbreviation, and the course number, along with the number of credits. They also have prerequisites and corequisites. These are key, and are the information that drive the entire program, so make sure that these are correct.
 
 CourseCollection
 ---

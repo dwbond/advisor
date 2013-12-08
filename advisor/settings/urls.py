@@ -11,15 +11,20 @@ urlpatterns = patterns('trajectories.views',
     # homepage
     url(r'^$', 'index', name = 'homepage'),
 
-    # slug is the course
+    # creating the trajectory
+    # slug is the student's netid
+    url(r'^(?P<slug>[^\.]+)/create/', 'maketrajectory', name = 'maketrajectory'),
+
     # course
+    # slug would be e.g. "CS211" or "ENGH302"
     url(r'^(?P<slug>[^\.]+)/$', 'course', name = 'course'),
 
     # student's page
+    # slug is the student's netid
     url(r'^(?P<slug>[^\.]+)/$', 'student', name = 'student'),
 
-    # slug is the student's
     # comparison page
+    # slug is the student's netid
     url(r'^(?P<slug>[^\.]+)/compare/$', 'compare', name = 'compare'),
 
     # about page
