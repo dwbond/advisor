@@ -11,8 +11,8 @@ class BaseModel(models.Model):
 class Course(BaseModel):
 
     # ordering
-    prerequisites = models.ManyToManyField('Course')
-    corequisites = models.ManyToManyField('Course')
+    prerequisites = models.ManyToManyField('Course', related_name = 'prereqField', null=True)
+    corequisites = models.ManyToManyField('Course', related_name = 'coreqField', null=True)
 
     # basic course information
     department = models.CharField(max_length = 150)
@@ -44,7 +44,7 @@ class Course(BaseModel):
 class CourseCollection(BaseModel):
 
     # a number of courses
-    courses = models.ManyToManyField('Course')
+    courses = models.ManyToManyField('Course',)
 
     # how many of those are required
     numberOfCoursesReq = models.IntegerField()
@@ -52,7 +52,7 @@ class CourseCollection(BaseModel):
 class Program(BaseModel):
 
     # courseCollections
-    courseReqs =  models.ManyToManyField('CourseCollection')
+    courseReqs =  models.ManyToManyField('CourseCollection',)
 
     # major or minor or gened
     programType = models.CharField(max_length = 25)
@@ -69,8 +69,8 @@ class Program(BaseModel):
 # should inherit from the standard Django User Model
 class Student(BaseModel):
 
-    alreadyTaken = models.ManyToManyField('Course')
-    trajectory = models.ManyToManyField('Trajectory')
+    alreadyTaken = models.ManyToManyField('Course', null=True)
+    trajectory = models.ManyToManyField('Trajectory', null=True)
 
     # aka username, etc should all be here
 
@@ -90,7 +90,7 @@ class Trajectory(BaseModel):
     # Kind of want to overwrite "name" as optional
 
     # Takes courses
-    potentialTrajectory = models.ManyToManyField('Course')
+    potentialTrajectory = models.ManyToManyField('Course',)
 
     # this isn't exactly done correctly-- ideally courses should be elements
     # of a list, not one created for each and every semester
