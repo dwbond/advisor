@@ -14,12 +14,25 @@ SRCT Advisor
 
 <!--change text if logged it: this is where "create a new trajectory" goes-->
 
-<p>Dropdown menus for Courses. Hopefully some fill-in-the-blanksing.</p>
-
-<p>Select your degree(s).</p>
-
-<p>Select your minor(s).</p>
-
-<p>Are you in the Honors College?</p>
+<form class="form-horizontal" role="form">
+  Select your courses(s).
+  <div class="form-group">
+    <label for "departmentAbbr" class="col-sm-2">Department</label>
+    <label for "courseNumber" class="col-sm-2">Course Number</label>
+    <label for "name" class="col-sm-2">Name</label>
+  </div>
+  Select your program(s).
+  <div class="form-group">
+    <label for "Program" class="col-sm-2">Program</label>
+  </div>
+  Select your minor(s).
+  <div class="form-group">
+    <label for "Program" class="col-sm-2">Minor</label>
+  </div>
+  Are you in the Honors College?
+  <div class="form-group">
+    <label for "degreeType" class="col-sm-2">Honors</label>
+  </div>
+</form>
 
 {% endblock %}
