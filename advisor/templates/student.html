@@ -6,9 +6,43 @@ GMU Advisor | Student's Name
 
 {% block content %}
 
-<p>Information on them</p>
-<p>Ability to make profile public or private</p>
-<p>List of trajectories-- select up to, say, three, and go to the comparison page.</p>
-<p>If public, compare yours to theirs.</p>
+<div class="row">
+  <div class="col-md-5">
+  <h3>Student's Name</h3>
+  </div>
+</div>
+
+<h4><strong>My Trajectories</strong></h4>
+
+<div class="row">
+  <div class="col-md-5">
+    <h4>Saved Trajectory Name</h4>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-primary">Edit</button>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-default">Private</button>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-danger">Delete</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-5">
+  <h4>Saved Trajectory Name</h4>
+  </div>
+<div class="col-md-1">
+    <button type="button" class="btn btn-primary">Edit</button>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-success">Public</button>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-danger">Delete</button>
+  </div>
+</div>
+
+<!-- How does one edit the courses that they've already completed? -->
 
 {% endblock %}
