@@ -91,3 +91,7 @@ def compare(request, slug):
 
     },
     )
+
+# page like one for courses, except for programs? >_>
+
+#search for courses or programs view
