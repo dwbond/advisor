@@ -50,8 +50,16 @@ def index(request):
     },
     )
 
+# SRCT, how to contribute information
+def about(request):
+
+    return render(request, 'about.html', {
+
+    },
+    )
+
 # student creates trajectory
-def makeTrajectory(request):
+def makeTrajectory(request, slug):
 
     return render(request, 'maketrajectory.html', {
     
@@ -77,17 +85,9 @@ def student(request, slug):
 
 # compares saved trajectories
 #@login_required
-def compare(request):
+def compare(request, slug):
 
     return render(request, 'compare.html', {
-
-    },
-    )
-
-# SRCT, how to contribute information
-def about(request):
-
-    return render(request, 'about.html', {
 
     },
     )
