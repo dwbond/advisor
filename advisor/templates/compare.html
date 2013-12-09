@@ -1,15 +1,60 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-SRCT Advisor | Compare
+GMU Advisor | Compare
 {% endblock %}
 
 {% block content %}
 
-<p>Select one of your trajectories from a dropdown</p>
-<p>Or a public trajectory</p>
+<h3>Compare up to three trajectories.</h4>
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for "myTrajectories" class="col-sm-2">My Trajectories</label>  
+      <div class="col-sm-4">
+        <select class="form-control">
+          <option>My Trajectory 1</option>
+          <option>My Trajectory 2</option>
+          <option>My Trajectory 3</option>
+          <option>My Trajectory 4</option>
+        </select>
+      </div>
+      <div class="col-sm-1">
+        <button type="button" class="btn btn-primary">+</button>
+      </div>
+  </div>
 
-<p>Trajectories in columns, up to three sounds reasonable</p>
-<p>Some sort of timeline along the side so that they're aligned properly</p>
+  <div class="form-group">
+    <label for "myTrajectories" class="col-sm-2">My Trajectories</label>  
+      <div class="col-sm-4">
+        <input type"text" class="form-control" id="Trajectory" placeholder="dbond2">
+      </div>
+      <div class="col-sm-1">
+        <button type="button" class="btn btn-primary">+</button>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-5 col-sm-1">
+      <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+    </div>
+  </div>
+
+</form>
+
+<div class="row">
+  <div class="col-md-6">
+  </div>
+  <div class="col-md-6">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
 
 {% endblock %}

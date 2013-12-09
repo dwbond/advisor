@@ -87,10 +87,12 @@ class Student(BaseModel):
 
 class Trajectory(BaseModel):
 
-    # Kind of want to overwrite "name" as optional
+    # name randomly generated
 
     # Takes courses
-    potentialTrajectory = models.ManyToManyField('Course',)
+    previousCourses = models.ManyToManyField('Course',)
+
+    isPublic = models.BooleanField()
 
     # this isn't exactly done correctly-- ideally courses should be elements
     # of a list, not one created for each and every semester
