@@ -78,6 +78,8 @@ def course(request, slug):
 #@login_required
 def student(request, slug):
 
+    student = get_object_or_404(Student, student__username=username)
+
     return render(request, 'student.html', {
 
     },
