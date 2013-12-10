@@ -36,13 +36,37 @@ def nextCourses(coursesTaken, remainingReqCourses):
              nextCourses.append(possibility)
      return nextCourses
 
+# this algorithm sucks because if there's a change to the number of allowed
+# majors then this will break
+def getGenEds(programs, isHonors):
+    genEdList = []
+    if isHonors:
+        genEdList.append("Honors")
+	# will require a program in the database called "Honors"
+	return genEdList
+    else:
+        firstMajorType = program[0].degreeType
+	genEdList.append(firstMajorType)
+	try:
+	    secondMajor = program[1].degreeType
+	    if firstMajorType is secondMajorType
+	        genEdList.append(secondMajorType)
+		return genEdList
+	except:
+	    return genEdList
+
 # how does one deal with "you have to take the coreq at the same time?"
 
 def topTrajectories(trajectories):
     topTrajectories = []
     # trajectories take trajectories
+    # representing how you build up semester by semester
     # find the one on the top of the pile
     return topTrajectories
+
+def getGenEds(programList, honorsBoolean):
+
+
 
 # page render functions
 
@@ -66,6 +90,10 @@ def about(request):
 # student creates trajectory
 def makeTrajectory(request, slug):
 
+    # needs to get list of programs from user
+    programs = []
+    # 
+
     return render(request, 'maketrajectory.html', {
     
     },
@@ -86,6 +114,7 @@ def student(request, slug):
     student = get_object_or_404(Student, user__username=username)
     trajectories = Trajectory.objects.filter(student__user__username=username)
     topTrajectories = topTrajectories(trajectories)
+    # until the topTrajectories function is written, this is a blank list
 
     return render(request, 'student.html', {
 

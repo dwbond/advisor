@@ -7,18 +7,22 @@
 # furthermore, you're not going to have to worry about whether or not
 # a course is 
 
-BEYOND PREREQ COREQ
-#############################################
+Information that is passed in from the initial request
 
-"Through 200 level"
+separate the input into two list for ease
 
-"At least 12 credits of xxx"
+this is also better because you can mandate how many of each is required
+(programList, maxProgramNumber)
 
-"One of "these" and two of "those""
+programs [list]
 
-"electives"
+minors [list]
 
-"take two sequences of"
+boolean isHonors
+
+--> getGenEds
+
+
 
 OTHER THOUGHTS
 #############################################
