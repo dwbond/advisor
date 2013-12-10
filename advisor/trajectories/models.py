@@ -97,7 +97,7 @@ class Trajectory(BaseModel):
     name = models.CharField(max_length = 150)
 
     # Takes courses
-    previousCourses = models.ManyToManyField('Course',)
+    previousCourses = models.ManyToManyField('Trajectory',)
 
     isPublic = models.BooleanField()
 

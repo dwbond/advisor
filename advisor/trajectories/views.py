@@ -38,6 +38,11 @@ def nextCourses(coursesTaken, remainingReqCourses):
 
 # how does one deal with "you have to take the coreq at the same time?"
 
+def topTrajectories(trajectories):
+    topTrajectories = []
+    # trajectories take trajectories
+    # find the one on the top of the pile
+    return topTrajectories
 
 # page render functions
 
@@ -78,9 +83,14 @@ def course(request, slug):
 #@login_required
 def student(request, slug):
 
-    student = get_object_or_404(Student, student__username=username)
+    student = get_object_or_404(Student, user__username=username)
+    trajectories = Trajectory.objects.filter(student__user__username=username)
+    topTrajectories = topTrajectories(trajectories)
 
     return render(request, 'student.html', {
+
+      'student' : student,
+      'topTrajectories' : topTrajectories,
 
     },
     )
