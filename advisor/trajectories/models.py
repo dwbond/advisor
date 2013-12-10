@@ -1,14 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class BaseModel(models.Model):
     created = models.DateTimeField('Created', auto_now_add=True, editable=False)
     last_modified = models.DateTimeField('Last Modified', auto_now=True)
-    name = models.CharField(max_length = 100)
 
     class Meta:
         abstract = True
 
 class Course(BaseModel):
+
+    name = models.CharField(max_length = 150)
 
     # ordering
     prerequisites = models.ManyToManyField('Course', related_name = 'prereqField', null=True)
@@ -28,8 +30,6 @@ class Course(BaseModel):
     
     # Course may need program-specific information
 
-    slug = models.SlugField(max_length = 50)
-
     # default sorting order in admin
     class Meta:
         ordering = ('name',)
@@ -43,6 +43,8 @@ class Course(BaseModel):
 # gen eds are coursecollections in programs
 class CourseCollection(BaseModel):
 
+    name = models.CharField(max_length = 150)
+
     # a number of courses
     courses = models.ManyToManyField('Course',)
 
@@ -50,6 +52,8 @@ class CourseCollection(BaseModel):
     numberOfCoursesReq = models.IntegerField()
 
 class Program(BaseModel):
+
+    name = models.CharField(max_length = 150)
 
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
@@ -69,12 +73,15 @@ class Program(BaseModel):
 # should inherit from the standard Django User Model
 class Student(BaseModel):
 
+    user = models.OneToOneField(User)
+    # might there be a problem with the name field in base?
+
+    # should this be a trajectory instead? >_>
     alreadyTaken = models.ManyToManyField('Course', null=True)
+    
     trajectory = models.ManyToManyField('Trajectory', null=True)
 
     # aka username, etc should all be here
-
-    slug = models.SlugField(max_length = 50)
 
     class Meta:
         ordering = ('name',)
@@ -87,7 +94,7 @@ class Student(BaseModel):
 
 class Trajectory(BaseModel):
 
-    # name randomly generated
+    name = models.CharField(max_length = 150)
 
     # Takes courses
     previousCourses = models.ManyToManyField('Course',)
