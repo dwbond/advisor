@@ -49,7 +49,9 @@ class CourseCollection(BaseModel):
     courses = models.ManyToManyField('Course',)
 
     # how many of those are required
-    numberOfCoursesReq = models.IntegerField()
+    numReq = models.IntegerField()
+
+    isCompleted = models.BooleanField(False)
 
 class Program(BaseModel):
 
@@ -63,6 +65,8 @@ class Program(BaseModel):
 
     # is BA, BS, Honors
     degreeType = models.CharField(max_length = 25)
+
+    isCompleted = models.BooleanField(False)
 
     class Meta:
         ordering = ('name',)

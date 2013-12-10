@@ -55,6 +55,24 @@ def getGenEds(programs, isHonors):
 	except:
 	    return genEdList
 
+def maxProgramsAllowed(programList, maxProgramNumber):
+    if (len(programList) + 1) > maxProgramNumer:
+        return False
+    else:
+        return True
+
+def fulfilledReq(coursesTaken, courseCollection, numReq):
+    """ makes CourseCollection.isCompleted True if completed
+        should only use where isCompleted is False
+	can also be used for Program.isCompleted """
+    finished = 0
+    for reqCourse in courseCollection:
+	if reqCourse in coursesTaken:
+	    finished += 1
+	    if finished >= numReq:
+                courseCollection.isCompleted = True
+	        break
+
 # how does one deal with "you have to take the coreq at the same time?"
 
 def topTrajectories(trajectories):
@@ -63,10 +81,6 @@ def topTrajectories(trajectories):
     # representing how you build up semester by semester
     # find the one on the top of the pile
     return topTrajectories
-
-def getGenEds(programList, honorsBoolean):
-
-
 
 # page render functions
 

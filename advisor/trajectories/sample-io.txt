@@ -22,7 +22,8 @@ boolean isHonors
 
 --> getGenEds
 
-
+def maxProgramsAllowed(programList, maxProgramNumber):
+  
 
 OTHER THOUGHTS
 #############################################
