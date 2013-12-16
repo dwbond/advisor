@@ -82,6 +82,12 @@ def topTrajectories(trajectories):
     # find the one on the top of the pile
     return topTrajectories
 
+def enoughCourses(coursesTaken):
+    if len(coursesTaken) > 120:
+        return True
+    else:
+        return False
+
 # page render functions
 
 # homepage, sign in to save or compare multiple options
