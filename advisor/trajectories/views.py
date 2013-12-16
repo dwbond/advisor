@@ -1,5 +1,6 @@
 from django.shortcuts import render, render_to_response
 from trajectories.models import Course, Trajectory, Student
+from django.db.models import Max
 
 # other functions
 
@@ -39,6 +40,8 @@ def nextCourses(coursesTaken, remainingReqCourses):
 # this algorithm sucks because if there's a change to the number of allowed
 # majors then this will break
 def getGenEds(programs, isHonors):
+    """ returns the gen eds a student has to take based on their selected
+        programs """
     genEdList = []
     if isHonors:
         genEdList.append("Honors")
@@ -56,6 +59,7 @@ def getGenEds(programs, isHonors):
 	    return genEdList
 
 def maxProgramsAllowed(programList, maxProgramNumber):
+    """ called to ensure student can't sign up for more than 2 majors, etc """
     if (len(programList) + 1) > maxProgramNumer:
         return False
     else:
@@ -73,20 +77,33 @@ def fulfilledReq(coursesTaken, courseCollection, numReq):
                 courseCollection.isCompleted = True
 	        break
 
-# how does one deal with "you have to take the coreq at the same time?"
-
 def topTrajectories(trajectories):
+    """ Only shows the uppermost level of trajectories--
+        there's no reason that *all* of the previously loaded classes
+	need be gone through; furthermore, students only need to see
+	the top level of each of their trajectories on their homepage """
+    
+    names = set()
+    for trajectory in trajectories:
+        names.append(trajectory.name)
+
     topTrajectories = []
-    # trajectories take trajectories
-    # representing how you build up semester by semester
-    # find the one on the top of the pile
+    for name in names:
+        namedTrajectories = trajectories.filter(name = name)
+	topNamedTrajectory = namedTrajectories.aggregate(Max('semester'))
+	topTrajectories.append(topNamedTrajectory)
+
     return topTrajectories
 
 def enoughCourses(coursesTaken):
+    """ required credits for degree program """
     if len(coursesTaken) > 120:
         return True
     else:
         return False
+
+### IMPORTANT OUTSTANDING ISSUE ###
+# how does one deal with "you have to take the coreq at the same time?"
 
 # page render functions
 
