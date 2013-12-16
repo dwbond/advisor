@@ -6,28 +6,52 @@ GMU Advisor | Create
 
 {% block content %}
 
-{% for program in programs %}
-
-# remaining classes for program 1
-
 <p>Returns the student's possible courses after their post from index</p>
 <p>Student then selects courses, send a post, save as a trajectory, then the pge reloads with the new information for the selecting.</p>
 <p>Because there are so many gen eds, those merely appear as a button for "Science" until they are selected, upon which a list appears and a student can make their selection.</p>
 <p>Should display which semester they are on for each level of selection, and lonly allow them to select 18 credits, flag it up to 20, etc.</p>
-<p>Submit, then repeat until there are no remaining classes</p>
-<p>Save buttons-- save buttons everywhere.</p>
-<p>Save your trajectory semester by semester.</p>
 
-{% endfor %}
+<form class="form-horizontal" role="form">
 
-{% for minor in minors %}
+These are the classes you'd be eligible to take this semester. Select the classes you want and hit Submit to continue.
 
-{% endfor %}
+  <h4>Majors</h4>
+  {% for program in programs %}
 
-<h4>Gen Eds</h4>
-{{ collection.name }}
+  Grid of classes you can take. Each bubble is 4 columns across, and they just continue on down the page.
 
+  <div class="form-group">
 
-<p><h1>We still have the corequisite problem unresolved</h1></p>
+  </div>
 
-{% endblock %}
+  {% endfor %}
+
+  <h4>Minors</h4>
+
+  {% for minor in minors %}
+
+  <div class="form-group">
+
+  </div>
+
+  {% endfor %}
+
+  <h4>Gen Eds</h4>
+
+  <div class="form-group">
+
+    {{ collection.name }}
+
+  </div>
+
+  <p><h1>We still have the corequisite problem unresolved</h1></p>
+
+  {% endblock %}
+
+  <div class="form-group">
+    <div class="col-sm-offset-11 col-sm-1">
+      <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+    </div>
+  </div>
+
+</form>

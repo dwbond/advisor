@@ -151,10 +151,8 @@ def student(request, slug):
     student = get_object_or_404(Student, user__username=username)
     trajectories = Trajectory.objects.filter(student__user__username=username)
     topTrajectories = topTrajectories(trajectories)
-    # until the topTrajectories function is written, this is a blank list
 
     return render(request, 'student.html', {
-
       'student' : student,
       'topTrajectories' : topTrajectories,
 
