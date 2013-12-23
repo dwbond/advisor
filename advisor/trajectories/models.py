@@ -75,12 +75,10 @@ class Program(BaseModel):
         return self.name
 
 # should inherit from the standard Django User Model
-class Student(BaseModel):
+class Student(User):
 
     user = models.OneToOneField(User)
-    # might there be a problem with the name field in base?
 
-    # should this be a trajectory instead? >_>
     alreadyTaken = models.ManyToManyField('Course', null=True)
     
     trajectory = models.ManyToManyField('Trajectory', null=True)
