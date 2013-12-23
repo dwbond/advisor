@@ -52,7 +52,7 @@ def getGenEds(programs, isHonors):
 	genEdList.append(firstMajorType)
 	try:
 	    secondMajor = program[1].degreeType
-	    if firstMajorType is secondMajorType
+	    if firstMajorType is secondMajorType:
 	        genEdList.append(secondMajorType)
 		return genEdList
 	except:

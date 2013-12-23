@@ -88,7 +88,7 @@ class Student(BaseModel):
     # aka username, etc should all be here
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('user',)
 
     def __unicode__(self):
         return self.name
