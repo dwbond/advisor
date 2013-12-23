@@ -19,6 +19,9 @@ urlpatterns = patterns('trajectories.views',
     # homepage
     url(r'^$', 'index', name = 'homepage'),
 
+    # log in
+    url(r'^login/$', 'login', name = 'login'),
+
     # about page
     url(r'^about/$', 'about', name = 'about'),
 

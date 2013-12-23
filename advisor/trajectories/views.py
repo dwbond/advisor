@@ -116,6 +116,13 @@ def index(request):
     },
     )
 
+def index(request):
+
+    return render(request, 'login.html', {
+
+    },
+    )
+
 # SRCT, how to contribute information
 def about(request):
 
