@@ -132,13 +132,13 @@ def about(request):
     )
 
 # student creates trajectory
-def makeTrajectory(request, slug):
+def create(request, slug):
 
     # needs to get list of programs from user
     programs = []
     # 
 
-    return render(request, 'maketrajectory.html', {
+    return render(request, 'create.html', {
     
     },
     )
