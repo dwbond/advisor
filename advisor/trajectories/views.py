@@ -132,6 +132,7 @@ def about(request):
     )
 
 # student creates trajectory
+# def create(request, slug):
 def create(request):
 
     # needs to get list of programs from user
@@ -168,7 +169,8 @@ def student(request, slug):
 
 # compares saved trajectories
 #@login_required
-def compare(request, slug):
+# def compare(request, slug):
+def compare(request):
 
     return render(request, 'compare.html', {
 

@@ -58,11 +58,11 @@ To-do
 * scraping of catalog.gmu.edu for the database (this also means that with a single command everyone can be working on the same database :3)
 * Forms on the index and create pages need to submit information
 * Forms on index and create pages also need to expand to an additional fields; also needs to take into consideration the max available
-* does the create page need to reload in between submissions? ajax or a new page?
+* does the create page need to reload in between submissions? ajax or a new page?  **different page for now, that might actually be "better"**
 * create ux-- timeline sidebar, countdown box indicating number of credits remaining
 * LDAP auth/login
 * compare trajectories (2 timeline | 5 classlist one  | 5 classlist two)
-* scraping the stie to populate the database
+* scraping the site to populate the database
 * moving over to mysql
 * there's some design work that needs to be done, as well as polishing, like privacy
 * Testing testing testing.
