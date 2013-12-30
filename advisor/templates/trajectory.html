@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+GMU Advisor | Trajectory Name
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Trajectory Name</h1>
+      <p class="lead">Student Name</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    {% for trajectory in trajectories %}
+      <div class="col-md-12">
+        {% for course in trajectory %}
+	  <div class="col-md-4">
+
+	  </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
