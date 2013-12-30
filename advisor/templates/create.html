@@ -6,24 +6,50 @@ GMU Advisor | Create
 
 {% block content %}
 
-<p>Returns the student's possible courses after their post from index</p>
-<p>Student then selects courses, send a post, save as a trajectory, then the pge reloads with the new information for the selecting.</p>
-<p>Because there are so many gen eds, those merely appear as a button for "Science" until they are selected, upon which a list appears and a student can make their selection.</p>
-<p>Should display which semester they are on for each level of selection, and lonly allow them to select 18 credits, flag it up to 20, etc.</p>
-
-<div class="row">
-  <div class="col-md-12">
-  Daniel's Trajectory for Computer Science, BS, and History, BA
+<div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2>Daniel's Trajectory for Computer Science, BS, and History, BA</h2>
+      <p class="lead">Semester Four</p>
+      <!-- Eventually need to give the graduation dates!
+           Can't believe I hadn't thought of that! -->
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-3">
-    <h3><p>Semesters ahead</p>
-    <p>Credits selected this semester</p>
-    <p>Credits remaining for program</p></h3>
+<div class="row well">
+  <div class="col-md-12">
+  See your previous semesters
+    <!-- accordian for previously semesters' trajectories -->
+    {% for trajectory in previousTrajectories %}
+      <div class="col-md-12">
+        {% for course in trajectory %}
+          <div class="col-md-4">
+	  Your courses
+	  </div>
+	{% endfor %}
+      </div>
+    {% endfor %}
   </div>
-  <div class="col-md-9">
+</div>
+
+<div class="row well">
+  <h4>
+  <div class="col-md-3">
+    <p>Semesters ahead</p>
+  </div>
+
+  <div class="col-md-3">
+    <p>Credits selected this semester</p>
+  </div>
+
+  <div class="col-md-3">
+    <p>Credits remaining for program</p>
+  </div>
+  </h4>
+</div>
+
+<div class="row well">
+  <div class="col-md-12">
     <form class="form-horizontal" role="form">
 These are the classes you'd be eligible to take this semester. Select the classes you want and hit Submit to continue.
       <h4>Majors</h4>
@@ -38,25 +64,36 @@ These are the classes you'd be eligible to take this semester. Select the classe
 
       <!-- accordian collapse -->
 	<h4>Minors</h4>
-        <div class="form-group">
-          {% for minor in minors %}
-            <div class="col-md-4">
+          <div class="form-group">
+            {% for minor in minors %}
+              <div class="col-md-4">
     	    
-	    </div>
-          {% endfor %}
-        </div>
+	      </div>
+            {% endfor %}
+          </div>
 
 
       <!-- accordian collapse -->
         <h4>Gen Eds</h4>
-        <div class="form-group">
-          {% for genEdCollection in genEdCollections %}
-	    <div class="col-md-12">
-              <!-- information about the gened then loads in an accordian -->
-	    </div>
-	  {% endfor %}
+          <!-- automatically takes into account BA/BS issues-
+	  has both- maybe popover? -->
+          <div class="form-group">
+            {% for genEdCollection in genEdCollections %}
+	      <div class="col-md-12">
+                <!-- information about the gened then loads in an accordian -->
+	          {% for courses in genEdCollection %}
+		    <div class="col-md-4">
+
+		    </div>
+		  {% endfor %}
+	      </div>
+	    {% endfor %}
 	</div> 
 
+      <div>
+      <p>Displays Error Messages</p>
+      <p>Selecting more than 18 credits will require approval of the Dean</p>
+      </div>
 
       <div class="form-group">
       <div class="col-sm-offset-11 col-sm-1">
@@ -66,8 +103,5 @@ These are the classes you'd be eligible to take this semester. Select the classe
     </form>
   </div>
 </div>
-
-Once the submit button is selected, this ^ somehow has to appear
-over the classes that were just selected, appearing as in the comparison page
 
 {% endblock %}
