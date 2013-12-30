@@ -31,6 +31,9 @@ urlpatterns = patterns('trajectories.views',
     # student's page
     url(r'^user/(?P<username>\w+)/$', 'student', name = 'student'),
 
+    # single trajectory page
+    url(r'^user/(?P<username>\w+)/(?P<trajectoryslug>\w+)$', 'trajectory', name = 'trajectory'),
+
     # creating the trajectory
     # url(r'^user/(?P<username>\w+)/create/$', 'create', name = 'create'),
     url(r'^create/$', 'create', name = 'create'),

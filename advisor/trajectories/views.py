@@ -152,6 +152,14 @@ def course(request, slug):
     },
     )
 
+def trajectory(request, slug):
+# actually needs more than one slug
+    
+    return render(request, 'trajectory.html', {
+
+    },
+    )
+
 # student's page; shows saved trajectories
 #@login_required
 def student(request, slug):
