@@ -6,75 +6,100 @@ GMU Advisor
 
 {% block content %}
 
-<h2>Welcome to GMU Advisor</h2> 
-<p><h4>a project of SRCT</h4></p>
+<div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1><strong>GMU</strong>&#8203;ADVISOR</h1>
+      <p class="lead">Automated Undergraduate Academic Advising*</p>
+    </div>
+  </div>
+</div>
 
-<p><h3>Advisor automates academic advising.* Build your trajectory to graduation, toy with new ideas, and compare your options. Select the classes you've already taken, and follow the instructions to start visualizing your way to the completion of your degree.</h3></p>
-
-<p><h4>Sign in with your GMU student username and password at the top to save your progress or compare multiple trajectories.</h4><p>
-
-<!--change text if logged it: this is where "create a new trajectory" goes-->
+<p><h4>Select the classes you've already taken, and follow the instructions to start visualizing your way to completing your degree.</h4></p>
 
 <br />
-
-<form class="form-horizontal" role="form">
-  Select your courses(s).
-  <div class="form-group">
-    <label for "departmentAbbr" class="col-sm-2">Department Abbreviation</label>
-      <div class="col-sm-1">
-        <input type="text" class="form-control" id="Program" placeholder="ENGH">
+<div class="row well">
+  <div class="col-md-12">
+    <form class="form-horizontal" role="form">
+      Select your courses(s).
+      <div class="form-group">
+        <label for "departmentAbbr" class="col-sm-2">Department Abbreviation</label>
+          <div class="col-sm-1">
+            <input type="text" class="form-control" id="Program" placeholder="ENGH">
+          </div>
+        <label for "courseNumber" class="col-sm-1">Course Number</label>
+          <div class="col-sm-1">
+            <input type="text" class="form-control" id="Program" placeholder="302">
+          </div>
+        <label for "name" class="col-sm-1">Name</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="Program" placeholder="Advanced Composition">
+          </div>
+       <div class="col-sm-1">
+         <button type="button" class="btn btn-primary">+</button>
+       </div>
+       <!-- not sure how to have a zillion of these fields keep on appearing -->
       </div>
-    <label for "courseNumber" class="col-sm-1">Course Number</label>
-      <div class="col-sm-1">
-        <input type="text" class="form-control" id="Program" placeholder="302">
+      Select your program(s).
+      <div class="form-group">
+        <label for "Program" class="col-sm-2">Program</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="Program" placeholder="Government and International Politics">
+	    <!-- autocompletion would be awesome -->
+        </div>
+         <div class="col-sm-1">
+          <button type="button" class="btn btn-primary">+</button>
+        </div>
       </div>
-    <label for "name" class="col-sm-1">Name</label>
-      <div class="col-sm-5">
-        <input type="text" class="form-control" id="Program" placeholder="Advanced Composition">
+      Select your minor(s).
+      <div class="form-group">
+        <label for "Minor" class="col-sm-2">Minor</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="Minors" placeholder="Software Engineering">
+        </div>
+        <div class="col-sm-1">
+          <button type="button" class="btn btn-primary">+</button>
+        </div>
       </div>
-   <div class="col-sm-1">
-     <button type="button" class="btn btn-primary">+</button>
-   </div>
- <!-- not sure how to have a zillion of these fields keep on appearing -->
+      <!-- #cooljsideas for this and select program, have a new field slide out
+      when one has been entered (2 for degree, 3 for minor)-->
+      Are you in the Honors College?
+      <div class="form-group">
+        <label for "honorscollege" class="col-sm-2">Honors</label>
+          <div class="col-sm-5">
+            <button type="button" class="btn btn-default">Yes</button>
+            <button type="button" class="btn btn-primary">No</button>
+          </div>
+      </div>
+      What is your current semester?
+      <div class="form-group">
+        <label for "degreeType" class="col-sm-2">Current Semester</label>
+          <div class="col-sm-3">
+            <select class="form-control">
+	      <option>First Semester Freshman</option>
+	      <option>Second Semester Freshman </option>
+	      <option>First Semester Sophomore</option>
+	      <option>Second Semester Sophomore</option>
+	      <option>First Semester Junior</option>
+	      <option>Second Semester Junior</option>
+	      <option>First Semester Senior</option>
+	      <option>Second Semester Senior</option>
+	      <option>First Semester SuperSenior</option>
+	      <option>Second Semester SuperSenior</option>
+	      <option>First Semester SuperSuperSenior</option>
+	      <!-- option You Mayyyyy Want to Consider Seeing an Actual Person /option -->
+	  </select>
+          </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-11 col-sm-1">
+          <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+          <!-- need to have the bar across the top loading js -->
+        </div>
+      </div>
+    </form>
   </div>
-  Select your program(s).
-  <div class="form-group">
-    <label for "Program" class="col-sm-2">Program</label>
-    <div class="col-sm-5">
-        <input type="text" class="form-control" id="Program" placeholder="Government and International Politics">
-	<!-- autocompletion would be awesome -->
-    </div>
-     <div class="col-sm-1">
-      <button type="button" class="btn btn-primary">+</button>
-    </div>
-  </div>
-  Select your minor(s).
-  <div class="form-group">
-    <label for "Program" class="col-sm-2">Minor</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control" id="Minors" placeholder="Software Engineering">
-    </div>
-    <div class="col-sm-1">
-      <button type="button" class="btn btn-primary">+</button>
-    </div>
-  </div>
-  <!-- #cooljsideas for this and select program, have a new field slide out
-  when one has been entered (2 for degree, 3 for minor)-->
-  Are you in the Honors College?
-  <div class="form-group">
-    <label for "degreeType" class="col-sm-2">Honors</label>
-     <div class="col-sm-5">
-      <button type="button" class="btn btn-default">Yes</button>
-      <button type="button" class="btn btn-primary">No</button>
-     </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-10 col-sm-1">
-      <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
-      <!-- need to have the bar across the top loading js -->
-    </div>
-  </div>
-</form>
+</div>
 <br />
-<p><h6>*Not intended as a replacement for formal academic advising through your department. Currently only supports undergraduate programs.</h6></p>
+<p><h6>*Not intended as a replacement for formal academic advising through your department.</h6></p>
 {% endblock %}
