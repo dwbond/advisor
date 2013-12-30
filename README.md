@@ -65,6 +65,7 @@ To-do
 * scraping the site to populate the database
 * moving over to mysql
 * there's some design work that needs to be done, as well as polishing, like privacy
+* Add support for APs
 * Testing testing testing.
 
 **Pipe Dreams**
@@ -74,6 +75,7 @@ To-do
 * Support departments to create sample trajectories for their students.
 * Identifying if courses are available in the semester desired, and if so, getting professor information, CRNs, and what have you.
 * An integrated "schedulizer"-type app for the classes that you've selected you want for that semester.
+* Make sure that the loginrequired works as initially intended, that you only need to sign in in order to save or compare trajectories... this way prospective students can put their potential trajectories together
 
 NOTE: A lot of musings about how the project will work are in a text file alongside the views and models. Please see if you can follow at all what I'm talking about.
 
