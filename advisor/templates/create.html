@@ -27,30 +27,42 @@ GMU Advisor | Create
     <form class="form-horizontal" role="form">
 These are the classes you'd be eligible to take this semester. Select the classes you want and hit Submit to continue.
       <h4>Majors</h4>
-      <div class="form-group">
-        {% for program in programs %}
-Grid of classes you can take. Each bubble is 4 columns across, and they just continue on down the page.
-        {% endfor %}
-      </div>
+      <!-- accordian collapse -->
+        <div class="form-group">
+          {% for program in programs %}
+            <div class="col-md-4">
 
-      <h4>Minors</h4>
-      <div class="form-group">
-        {% for minor in minors %}
+            </div>
+	  {% endfor %}
+        </div>
 
-        {% endfor %}
-      </div>
+      <!-- accordian collapse -->
+	<h4>Minors</h4>
+        <div class="form-group">
+          {% for minor in minors %}
+            <div class="col-md-4">
+    	    
+	    </div>
+          {% endfor %}
+        </div>
 
 
-      <h4>Gen Eds</h4>
-      <div class="form-group">
-        {{ collection.name }}
-      </div> 
+      <!-- accordian collapse -->
+        <h4>Gen Eds</h4>
+        <div class="form-group">
+          {% for genEdCollection in genEdCollections %}
+	    <div class="col-md-12">
+              <!-- information about the gened then loads in an accordian -->
+	    </div>
+	  {% endfor %}
+	</div> 
 
 
       <div class="form-group">
       <div class="col-sm-offset-11 col-sm-1">
         <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
       </div>
+
     </form>
   </div>
 </div>
