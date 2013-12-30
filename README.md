@@ -52,21 +52,26 @@ To-do
 
 **First orders of business**
 
+*Matters of Functionality*
 * how do you make coreqs work? right now it assumes that a coreq has to come first, but that's obviously not how they work
 * there are going to be some issues if you can name a trajectory, but each sememester is actually a trajectory...
-* autocomplete js for the course name field (after a user puts in the department abbreviation and the course name (note unlike bookshare this information needn't be editable)
-* scraping of catalog.gmu.edu for the database (this also means that with a single command everyone can be working on the same database :3)
+* Display when the student is going to graduate, and accept the semester number for trajectories
+* Add support for APs, and fix the "login required" stuff
+
+*Forms and Views*
+* some sort of javascript on the comparison page
 * Forms on the index and create pages need to submit information
-* Forms on index and create pages also need to expand to an additional fields; also needs to take into consideration the max available
+* Forms on index and create pages also need to expand to an additional fields; also needs to take into consideration the max available, show alerts
 * does the create page need to reload in between submissions? ajax or a new page?  **different page for now, that might actually be "better"**
-* create ux-- timeline sidebar, countdown box indicating number of credits remaining
 * LDAP auth/login
-* compare trajectories (2 timeline | 5 classlist one  | 5 classlist two)
+* comparison page needs some lovely analytics on the compared trajectories for the user
+* polishing, like privacy policy
+
+*Database and Webscraping*
 * scraping the site to populate the database
 * moving over to mysql
-* there's some design work that needs to be done, as well as polishing, like privacy
-* Add support for APs
-* Testing testing testing.
+* scraping of catalog.gmu.edu for the database (this also means that with a single command everyone can be working on the same database :3)
+* autocomplete js for the course name field (after a user puts in the department abbreviation and the course name (note unlike bookshare this information needn't be editable)
 
 **Pipe Dreams**
 
