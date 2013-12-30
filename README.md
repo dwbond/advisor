@@ -53,6 +53,7 @@ To-do
 **First orders of business**
 
 * how do you make coreqs work? right now it assumes that a coreq has to come first, but that's obviously not how they work
+* there are going to be some issues if you can name a trajectory, but each sememester is actually a trajectory...
 * autocomplete js for the course name field (after a user puts in the department abbreviation and the course name (note unlike bookshare this information needn't be editable)
 * scraping of catalog.gmu.edu for the database (this also means that with a single command everyone can be working on the same database :3)
 * Forms on the index and create pages need to submit information

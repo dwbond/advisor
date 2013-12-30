@@ -132,7 +132,7 @@ def about(request):
     )
 
 # student creates trajectory
-def create(request, slug):
+def create(request):
 
     # needs to get list of programs from user
     programs = []

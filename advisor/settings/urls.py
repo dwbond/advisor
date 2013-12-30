@@ -32,7 +32,7 @@ urlpatterns = patterns('trajectories.views',
     url(r'^user/(?P<username>\w+)/$', 'student', name = 'student'),
 
     # creating the trajectory
-    url(r'^user/(?P<username>\w+)/create/(?P<trajectoryslug>\w+)/$', 'create', name = 'create'),
+    url(r'^create/$', 'create', name = 'create'),
 
     # comparison page
     url(r'^user/(?P<username>\w+)/compare/$', 'compare', name = 'compare'),
