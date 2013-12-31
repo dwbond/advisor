@@ -100,5 +100,40 @@ USE_L10N = True
 
 USE_TZ = True
 
+##### LDAP #####
 
+import ldap
+# Baseline configuration
 
+# Keep ModelBackend around for per-user permissions and maybe a local
+# superuser.
+AUTHENTICATION_BACKENDS = (
+'django_auth_ldap.backend.LDAPBackend',
+'django.contrib.auth.backends.ModelBackend',
+)
+
+# GMU LDAP database. This is also accessible at newldap.gmu.edu
+AUTH_LDAP_SERVER_URI = "ldaps://directory.gmu.edu:636"
+AUTH_LDAP_BIND_DN = "ou=people,o=gmu.edu"
+
+# Since we authenticate by logging into the LDAP server, you need to
+# bind to the LDAP server as the authenticating user.
+AUTH_LDAP_BIND_AS_AUTHENTICATING_USER = True
+
+# This sticks the "user" plug into the hole in the DN string.
+AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=people,o=gmu.edu"
+
+# Basically this is required to ignore the self-signed GMU cert.
+AUTH_LDAP_GLOBAL_OPTIONS = {
+ldap.OPT_X_TLS : ldap.OPT_X_TLS_DEMAND,
+ldap.OPT_X_TLS_REQUIRE_CERT : ldap.OPT_X_TLS_NEVER,
+}
+
+# Populate the Django User model from the LDAP directory.
+AUTH_LDAP_USER_ATTR_MAP = {
+"first_name": "givenName",
+"last_name": "sn",
+"email": "mail"
+}
+
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
