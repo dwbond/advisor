@@ -42,6 +42,14 @@ urlpatterns = patterns('trajectories.views',
     # url(r'^user/(?P<username>\w+)/compare/$', 'compare', name = 'compare'),
     url(r'^compare/$', 'compare', name = 'compare'),
 
+    # admin pages
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+)
+
+urlpatterns += patterns('django.contrib.auth.views',
+    # auth pages
+    url(r'^login$', 'login', {'template_name': 'login.html'},
+        name='website_login'),
+    url(r'^logout$', 'logout', {'next_page': '/'}, name='website_logout'),
 )
