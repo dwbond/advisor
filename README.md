@@ -57,6 +57,7 @@ To-do
 * there are going to be some issues if you can name a trajectory, but each sememester is actually a trajectory...
 * Display when the student is going to graduate, and accept the semester number for trajectories
 * Add support for APs, and fix the "login required" stuff
+* Javascript to count the number of credits selected
 
 *Forms and Views*
 * some sort of javascript on the comparison page
