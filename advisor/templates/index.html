@@ -19,8 +19,11 @@ GMU Advisor
 
 <div class="row well">
   <div class="col-md-12">
-    <form class="form-horizontal" role="form">
-      Select your courses(s).
+    <form class="form-horizontal" action="" method="post" role="form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset>
+
+      <legend>Select your courses(s).</legend>
       <div class="form-group">
         <label for "departmentAbbr" class="col-sm-2">Department Abbreviation</label>
           <div class="col-sm-1">
@@ -30,7 +33,8 @@ GMU Advisor
           <div class="col-sm-1">
             <input type="text" class="form-control" id="Program" placeholder="302">
           </div>
-        <label for "name" class="col-sm-1">Name</label>
+        <!-- Name loads automatically -->
+	<label for "name" class="col-sm-1">Name</label>
           <div class="col-sm-5">
             <input type="text" class="form-control" id="Program" placeholder="Advanced Composition">
           </div>
@@ -39,7 +43,8 @@ GMU Advisor
        </div>
        <!-- not sure how to have a zillion of these fields keep on appearing -->
       </div>
-      Select your program(s).
+
+      <legend>Select your program(s).</legend>
       <div class="form-group">
         <label for "Program" class="col-sm-2">Program</label>
         <div class="col-sm-5">
@@ -50,7 +55,8 @@ GMU Advisor
           <button type="button" class="btn btn-primary">+</button>
         </div>
       </div>
-      Select your minor(s).
+
+      <legend>Select your minor(s).</legend>
       <div class="form-group">
         <label for "Minor" class="col-sm-2">Minor</label>
         <div class="col-sm-5">
@@ -62,7 +68,8 @@ GMU Advisor
       </div>
       <!-- #cooljsideas for this and select program, have a new field slide out
       when one has been entered (2 for degree, 3 for minor)-->
-      Are you in the Honors College?
+      
+      <legend>Are you in the Honors College?</legend>
       <div class="form-group">
         <label for "honorscollege" class="col-sm-2">Honors</label>
           <div class="col-sm-5">
@@ -70,7 +77,8 @@ GMU Advisor
             <button type="button" class="btn btn-primary">No</button>
           </div>
       </div>
-      What is your current semester?
+
+      <legend>What is your current semester?</legend>
       <div class="form-group">
         <label for "degreeType" class="col-sm-2">Current Semester</label>
           <div class="col-sm-3">
@@ -96,6 +104,7 @@ GMU Advisor
           <!-- need to have the bar across the top loading js -->
         </div>
       </div>
+    </fieldset>
     </form>
   </div>
 </div>
