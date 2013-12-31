@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.db.models.signals import post_save
+
 class BaseModel(models.Model):
     created = models.DateTimeField('Created', auto_now_add=True, editable=False)
     last_modified = models.DateTimeField('Last Modified', auto_now=True)
@@ -75,7 +77,7 @@ class Program(BaseModel):
         return self.name
 
 # should inherit from the standard Django User Model
-class Student(User):
+class Student(models.Model):
 
     user = models.OneToOneField(User)
 
@@ -93,6 +95,12 @@ class Student(User):
 
     def get_absolute_url(self):
         return self.name
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Student.objects.create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)
 
 class Trajectory(BaseModel):
 
