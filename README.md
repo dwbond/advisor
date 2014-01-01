@@ -73,6 +73,7 @@ To-do
 * moving over to mysql
 * scraping of catalog.gmu.edu for the database (this also means that with a single command everyone can be working on the same database :3)
 * autocomplete js for the course name field (after a user puts in the department abbreviation and the course name (note unlike bookshare this information needn't be editable)
+* map "Second Semester Junior" and the like to numbers for the graduation feature
 
 **Pipe Dreams**
 

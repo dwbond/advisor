@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from trajectories.models import Course, Trajectory, Student
+from trajectories.models import Course, CourseCollection, Program, Student, Trajectory
 from django.db.models import Max
 
 # other functions

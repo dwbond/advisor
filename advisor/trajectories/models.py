@@ -115,6 +115,10 @@ class Trajectory(BaseModel):
     # of a list, not one created for each and every semester
     semester = models.IntegerField()
 
+    class Meta:
+        ordering = ('name',)
+        verbose_name_plural = "trajectories"
+
     def get_absolute_url(self):
         return 'my-trajectories/%s/' % self.slug
 
