@@ -38,9 +38,9 @@ Type the following commands in your terminal (if you're on Windows, [Cygwin](htt
 ``virtualenv ~/.virtualenvs/advisor``
 ``source ~/.virtualenvs/advisor/bin/activate``
 ``pip install -r requirements.txt``
-``create the database``
-``python manage.py syncdb`` (the username and password are just for your machine-- you can set it as merely "me" and "password" if you like)
+create the database
 ``python manage.py schemamigration trajectories --initial``
+``python manage.py syncdb`` (the username and password are just for your machine-- you can set it as merely "me" and "password" if you like)
 ``python manage.py runserver``
 
 Next, open your web broswer of choice, and go to http//:127.0.0.1:8000/. You won't see too much. You'll need to add the courses and programs to the database.
@@ -52,15 +52,27 @@ To-do
 
 **First orders of business**
 
+*Matters of Functionality*
 * how do you make coreqs work? right now it assumes that a coreq has to come first, but that's obviously not how they work
-* autocomplete js for the course name field (after a user puts in the department abbreviation and the course name
-* scraping of catalog.gmu.edu for the database (this also means that with a single command everyone can be working on the same database :3)
-* The student models needs to support the Django User Model
+* there are going to be some issues if you can name a trajectory, but each sememester is actually a trajectory...
+* Display when the student is going to graduate, and accept the semester number for trajectories
+* Add support for APs, and fix the "login required" stuff
+* Javascript to count the number of credits selected
+
+*Forms and Views*
+* some sort of javascript on the comparison page
 * Forms on the index and create pages need to submit information
-* Forms on index and create pages also need to expand to an additional fields; also needs to take into consideration the max available
-* does the create page need to reload in between submissions? I don't really know how that works
-* LDAP auth
-* Testing testing testing.
+* Forms on index and create pages also need to expand to an additional fields; also needs to take into consideration the max available, show alerts
+* does the create page need to reload in between submissions? ajax or a new page?  **different page for now, that might actually be "better"**
+* LDAP auth/login
+* comparison page needs some lovely analytics on the compared trajectories for the user
+* polishing, like privacy policy
+
+*Database and Webscraping*
+* scraping the site to populate the database
+* moving over to mysql
+* scraping of catalog.gmu.edu for the database (this also means that with a single command everyone can be working on the same database :3)
+* autocomplete js for the course name field (after a user puts in the department abbreviation and the course name (note unlike bookshare this information needn't be editable)
 
 **Pipe Dreams**
 
@@ -69,6 +81,7 @@ To-do
 * Support departments to create sample trajectories for their students.
 * Identifying if courses are available in the semester desired, and if so, getting professor information, CRNs, and what have you.
 * An integrated "schedulizer"-type app for the classes that you've selected you want for that semester.
+* Make sure that the loginrequired works as initially intended, that you only need to sign in in order to save or compare trajectories... this way prospective students can put their potential trajectories together
 
 NOTE: A lot of musings about how the project will work are in a text file alongside the views and models. Please see if you can follow at all what I'm talking about.
 

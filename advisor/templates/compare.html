@@ -6,54 +6,111 @@ GMU Advisor | Compare
 
 {% block content %}
 
-<h3>Compare up to three trajectories.</h4>
-<form class="form-horizontal" role="form">
-  <div class="form-group">
-    <label for "myTrajectories" class="col-sm-2">My Trajectories</label>  
-      <div class="col-sm-4">
-        <select class="form-control">
-          <option>My Trajectory 1</option>
-          <option>My Trajectory 2</option>
-          <option>My Trajectory 3</option>
-          <option>My Trajectory 4</option>
-        </select>
-      </div>
-      <div class="col-sm-1">
-        <button type="button" class="btn btn-primary">+</button>
-      </div>
-  </div>
-
-  <div class="form-group">
-    <label for "myTrajectories" class="col-sm-2">Public Trajectories</label>  
-      <div class="col-sm-4">
-        <input type"text" class="form-control" id="Trajectory" placeholder="dbond2">
-      </div>
-      <div class="col-sm-1">
-        <button type="button" class="btn btn-primary">+</button>
-      </div>
+<div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2>Compare Trajectories</h2>
     </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-5 col-sm-1">
-      <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
-    </div>
-  </div>
-
-</form>
-
-<div class="row">
-  <div class="col-md-6">
-  </div>
-  <div class="col-md-6">
   </div>
 </div>
 
+<div class="row well">
+  <div class="col-md-12">
+    <legend>Choose up to three</legend>
+    <form class="form-vertical" action="" method="post" role="form" enctype="multipart/form-data">
+    <!-- learn what enctype does when you have internet -->
+      <div class="form-group">
+        <label for "myTrajectories" class="col-md-2">My Trajectories</label>  
+          <div class="col-md-3">
+            <select class="form-control">
+              <option>My Trajectory 1</option>
+              <option>My Trajectory 2</option>
+              <option>My Trajectory 3</option>
+              <option>My Trajectory 4</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-primary">+</button>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for "myTrajectories" class="col-md-2">Public Trajectories</label>  
+          <div class="col-md-3">
+            <input type"text" class="form-control" id="Trajectory" placeholder="dbond2">
+          </div>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-primary">+</button>
+          </div>
+        </div>
+
+      <!-- spacing should be fixed -->
+      <br />
+      <br />
+
+      <div class="form-group">
+        <div class="col-md-offset-11 col-md-">
+          <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<p> This is just what this lower part is going to look like-- it actually needs
+to be loaded  on submit with JavaScript ;_; </p>
+<p> TopTrajectory stuff needed </p>
+
+<!-- have an if statement that will have the courses in two columns if only
+     two are selected -->
+
 <div class="row">
-  <div class="col-md-4">
+
+  <div class="col-md-4 well">
+    <h3>Trajectory One's Name</h3>
+    <h4><p>Name(s) of the programs</p></h4>
+      {% for trajectory in previousTrajectories %}
+        <div class="col-md-4">
+	  {% for course in trajectory %}
+
+	  {% endfor %}
+	</div>
+      {% endfor %}
   </div>
-  <div class="col-md-4">
+
+  <div class="col-md-4 well">
+    <h3>Trajectory Two's Name</h3>
+    <h4><p>Name(s) of the programs</p></h4>
+      {% for trajectory in previousTrajectories %}
+        <div class="col-md-4">
+	  {% for course in trajectory %}
+            <div class="col-md-4">
+	      Information about the class
+	    </div>
+	  {% endfor %}
+	  Information about the semester
+	</div>
+      {% endfor %}
   </div>
-  <div class="col-md-4">
+
+  <div class="col-md-4 well">
+    <h3>Trajectory Three's Name</h3>
+    <h4><p>Name(s) of the programs</p></h4>
+      {% for trajectory in previousTrajectories %}
+        <div class="col-md-4">
+	  {% for course in trajectory %}
+
+	  {% endfor %}
+	</div>
+      {% endfor %}
+  </div>
+
+</div>
+
+<div class="row well">
+  <div class="col-md-12">
+    <legend>Automatic comparisons of your selected trajectories.</legend>
   </div>
 </div>
 

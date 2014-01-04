@@ -19,6 +19,9 @@ urlpatterns = patterns('trajectories.views',
     # homepage
     url(r'^$', 'index', name = 'homepage'),
 
+    # log in
+    url(r'^login/$', 'login', name = 'login'),
+
     # about page
     url(r'^about/$', 'about', name = 'about'),
 
@@ -28,12 +31,25 @@ urlpatterns = patterns('trajectories.views',
     # student's page
     url(r'^user/(?P<username>\w+)/$', 'student', name = 'student'),
 
+    # single trajectory page
+    url(r'^user/(?P<username>\w+)/(?P<trajectoryslug>\w+)$', 'trajectory', name = 'trajectory'),
+
     # creating the trajectory
-    url(r'^user/(?Pusername>\w+)/create/(?P<trajectoryslug>\w+)/$', 'makeTrajectory', name = 'maketrajectory'),
+    # url(r'^user/(?P<username>\w+)/create/$', 'create', name = 'create'),
+    url(r'^create/$', 'create', name = 'create'),
 
     # comparison page
-    url(r'^user/(?P<username>\w+)/compare/$', 'compare', name = 'compare'),
+    # url(r'^user/(?P<username>\w+)/compare/$', 'compare', name = 'compare'),
+    url(r'^compare/$', 'compare', name = 'compare'),
 
+    # admin pages
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+)
+
+urlpatterns += patterns('django.contrib.auth.views',
+    # auth pages
+    url(r'^login$', 'login', {'template_name': 'login.html'},
+        name='website_login'),
+    url(r'^logout$', 'logout', {'next_page': '/'}, name='website_logout'),
 )

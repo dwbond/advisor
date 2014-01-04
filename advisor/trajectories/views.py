@@ -52,7 +52,7 @@ def getGenEds(programs, isHonors):
 	genEdList.append(firstMajorType)
 	try:
 	    secondMajor = program[1].degreeType
-	    if firstMajorType is secondMajorType
+	    if firstMajorType is secondMajorType:
 	        genEdList.append(secondMajorType)
 		return genEdList
 	except:
@@ -116,6 +116,13 @@ def index(request):
     },
     )
 
+def login(request):
+
+    return render(request, 'login.html', {
+
+    },
+    )
+
 # SRCT, how to contribute information
 def about(request):
 
@@ -125,13 +132,14 @@ def about(request):
     )
 
 # student creates trajectory
-def makeTrajectory(request, slug):
+# def create(request, slug):
+def create(request):
 
     # needs to get list of programs from user
     programs = []
     # 
 
-    return render(request, 'maketrajectory.html', {
+    return render(request, 'create.html', {
     
     },
     )
@@ -140,6 +148,14 @@ def makeTrajectory(request, slug):
 def course(request, slug):
 
     return render(request, 'course.html', {
+
+    },
+    )
+
+def trajectory(request, slug):
+# actually needs more than one slug
+    
+    return render(request, 'trajectory.html', {
 
     },
     )
@@ -161,7 +177,8 @@ def student(request, slug):
 
 # compares saved trajectories
 #@login_required
-def compare(request, slug):
+# def compare(request, slug):
+def compare(request):
 
     return render(request, 'compare.html', {
 

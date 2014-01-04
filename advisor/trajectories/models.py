@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.db.models.signals import post_save
+
 class BaseModel(models.Model):
     created = models.DateTimeField('Created', auto_now_add=True, editable=False)
     last_modified = models.DateTimeField('Last Modified', auto_now=True)
@@ -75,12 +77,10 @@ class Program(BaseModel):
         return self.name
 
 # should inherit from the standard Django User Model
-class Student(BaseModel):
+class Student(models.Model):
 
     user = models.OneToOneField(User)
-    # might there be a problem with the name field in base?
 
-    # should this be a trajectory instead? >_>
     alreadyTaken = models.ManyToManyField('Course', null=True)
     
     trajectory = models.ManyToManyField('Trajectory', null=True)
@@ -88,13 +88,19 @@ class Student(BaseModel):
     # aka username, etc should all be here
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('user',)
 
     def __unicode__(self):
         return self.name
 
     def get_absolute_url(self):
         return self.name
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Student.objects.create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)
 
 class Trajectory(BaseModel):
 
