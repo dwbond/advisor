@@ -87,6 +87,11 @@ DATABASES = {
     }
 }
 
+# ordering of apps in admin interface
+# https://djangosnippets.org/snippets/1939/
+# ADMIN_REORDER = (
+# )
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
