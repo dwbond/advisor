@@ -25,6 +25,12 @@ class Course(BaseModel):
     courseDescription = models.TextField()
     credits = models.IntegerField()
 
+    def isUpperClass:
+      if courseNumber > 300:
+          return True:
+      else:
+          return False
+
     # available next semester?
     # CRN
     # section number
