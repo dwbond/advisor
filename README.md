@@ -85,12 +85,45 @@ null values or
 
 **Templates**
 
+<table>
+  <tr>
+    <td>Template Name</td>
+    <td>Function</td>
+  </tr>
+  <tr>
+    <td>index</td>
+    <td>This is where students can create a new trajectory. (The portion where
+    they enter all of their clases should disappear if they've 
+  </tr>
+  <tr>
+    <td>create</td>
+    <td>Based on the information passed in from the </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 To-do
 ---
 
 **First orders of business**
 
 *Matters of Functionality*
+
 * how do you make coreqs work? right now it assumes that a coreq has to come
 first, but that's obviously not how they work
 * there are going to be some issues if you can name a trajectory, but each
@@ -101,6 +134,7 @@ for trajectories
 * Javascript to count the number of credits selected
 
 *Forms and Views*
+
 * some sort of javascript on the comparison page
 * Forms on the index and create pages need to submit information
 * Forms on index and create pages also need to expand to an additional fields;
@@ -113,6 +147,7 @@ the user
 * polishing, like privacy policy
 
 *Database and Webscraping*
+
 * scraping the site to populate the database
 * moving over to mysql
 * scraping of catalog.gmu.edu for the database (this also means that with a
