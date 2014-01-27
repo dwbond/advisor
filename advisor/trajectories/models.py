@@ -25,6 +25,12 @@ class Course(BaseModel):
     courseDescription = models.TextField()
     credits = models.IntegerField()
 
+    # catalog year for the course
+    catalogYear = models.DateField()
+
+    # needs to be associated with a student, may not belong here
+    isCompleted = models.BooleanField(False)
+
     def isUpperClass:
       if courseNumber > 300:
           return True:
@@ -59,6 +65,12 @@ class CourseCollection(BaseModel):
     # how many of those are required
     numReq = models.IntegerField()
 
+    # function to determine if there is a difference between this and last year
+    # not everything changes-- should be able to multiple reference to one thing
+
+    # catalog year for the coursecollection
+    catalogYear = models.DateField()
+
     # if the course collection's numreq is met
     isCompleted = models.BooleanField(False)
 
@@ -77,6 +89,9 @@ class Program(BaseModel):
     # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
     degreeType = models.ManyToManyField('Program', null=True)
 
+    # catalog year for the Program
+    catalogYear = models.DateField()
+    
     # if all coursecollections' and gened requirements are satisfied, then the
     # program is completed
     isCompleted = models.BooleanField(False)
@@ -92,9 +107,6 @@ class Student(models.Model):
 
     user = models.OneToOneField(User)
 
-    # the student's already-completed classes, the root of the trajectory tree
-    alreadyTaken = models.ManyToManyField('Course', null=True)
-    
     # all of the student's trajectories
     trajectory = models.ManyToManyField('Trajectory', null=True)
 
@@ -126,6 +138,8 @@ class Trajectory(BaseModel):
     # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
     forPrograms = models.ManyToManyField('Program',)
 
+    # function returns if it is an end node on the tree
+    
     # whether or not the trajectory can be seen by others
     isPublic = models.BooleanField()
 
