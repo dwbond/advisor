@@ -59,6 +59,7 @@ class CourseCollection(BaseModel):
     # how many of those are required
     numReq = models.IntegerField()
 
+    # if the course collection's numreq is met
     isCompleted = models.BooleanField(False)
 
 class Program(BaseModel):
@@ -72,8 +73,12 @@ class Program(BaseModel):
     programType = models.CharField(max_length = 25)
 
     # is BA, BS, Honors
-    degreeType = models.CharField(max_length = 25)
+    # all majors must take a gened program, null for minors, geneds
+    # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
+    degreeType = models.ManyToManyField('Program', null=True)
 
+    # if all coursecollections' and gened requirements are satisfied, then the
+    # program is completed
     isCompleted = models.BooleanField(False)
 
     class Meta:
@@ -87,8 +92,10 @@ class Student(models.Model):
 
     user = models.OneToOneField(User)
 
+    # the student's already-completed classes, the root of the trajectory tree
     alreadyTaken = models.ManyToManyField('Course', null=True)
     
+    # all of the student's trajectories
     trajectory = models.ManyToManyField('Trajectory', null=True)
 
     # aka username, etc should all be here
@@ -115,6 +122,11 @@ class Trajectory(BaseModel):
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)
 
+    # the program(s) that this trajectory is completing
+    # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
+    forPrograms = models.ManyToManyField('Program',)
+
+    # whether or not the trajectory can be seen by others
     isPublic = models.BooleanField()
 
     # this isn't exactly done correctly-- ideally courses should be elements
