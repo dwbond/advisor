@@ -110,9 +110,9 @@ def enoughCourses(coursesTaken):
 # homepage, sign in to save or compare multiple options
 #@login_required -- not sure how this part works
 def index(request):
-
+    courses = [] # student's courses
     return render(request, 'index.html', {
-
+        "courses" : courses
     },
     )
 
