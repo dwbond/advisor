@@ -41,16 +41,27 @@ the 32 bit version).
 (also, ssh keys...)
 
 ``bash``
+
 ``git clone http://git.gmu.edu/srct/advisor.git``
+
 ``cd advisor``
+
 ``mkdir ~/.virtualenvs``
+
 ``virtualenv ~/.virtualenvs/advisor``
+
 ``source ~/.virtualenvs/advisor/bin/activate``
+
+
 ``pip install -r requirements.txt``
+
 create the database
+
 ``python manage.py schemamigration trajectories --initial``
+
 ``python manage.py syncdb`` (the username and password are just for your
 machine-- you can set it as merely "me" and "password" if you like)
+
 ``python manage.py runserver``
 
 Next, open your web broswer of choice, and go to http//:127.0.0.1:8000/. You 
