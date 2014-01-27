@@ -31,7 +31,6 @@ Setup
 To get started, you'll need the following installed:
 
 * [Python 2.7.3](http://www.python.org/download/)
-* [Django 1.6](https://www.djangoproject.com/download/)
 * [Git](http://git-scm.com/book/en/Getting-Started-Installing-Git/)
 * [Pip](http://www.pip-installer.org/en/latest/installing.html)
 * [virtualenv](http://www.virtualenv.org/en/latest/index.html#installation)
@@ -87,33 +86,91 @@ null values or
 
 <table>
   <tr>
-    <td>Template Name</td>
-    <td>Function</td>
+    <td>
+    Template Name
+    </td>
+    <td>
+    Function
+    </td>
   </tr>
   <tr>
-    <td>index</td>
-    <td>This is where students can create a new trajectory. (The portion where
-    they enter all of their clases should disappear if they've 
+    <td>
+    index
+    </td>
+    <td>
+    This is where students can create a new trajectory. If students haven't yet
+    already selected the classes they've taken, they can select those classes
+    here
+    </td>
   </tr>
   <tr>
-    <td>create</td>
-    <td>Based on the information passed in from the </td>
+    <td>
+    create
+    </td>
+    <td>
+    Based on the information passed in from the 'index' page, this page shows
+    which classes a student is allowed to take the subsequent semester,
+    depending on the prereqs and coreqs. It will use ajax to allow the student
+    to select their classes and have their next allowed classes returned until
+    they have completed their program.
+    </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+    student
+    </td>
+    <td>
+    This template acts as a dashboard for each student, showing their saved
+    trajectories, allows them to adjust the classes they've taken, etc.
+
+    Later along, it will have some social features, like following public
+    trajectories or seeing what classes their "friends" are taking.
+    </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+    trajectory / course
+    </td>
+    <td>
+    These templates just display a trajectory or a course on their own for
+    inspection. Trajectories can be made public and shared.
+    </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+    compare
+    </td>
+    <td>
+    This page allows students to compare side-by-side up to three trajectories,
+    of their own or others that are public. Analytics are preformed over the
+    selected trajectories and displayed, showing, for instance, which has the
+    most courses, which has the most courses 300+, and more.
+    </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+    analysis
+    </td>
+    <td>
+    This template (to be created in further on) shows which classes are the most
+    popular, how long on average each completed trajectory takes, popular classes
+    for certain parts of a major, and more.
+
+    I'd like the site to also have a separate app for taking the classes that a
+    student wants to take for a given semester, and when that semester rolls by,
+    it'd perform something along the lines of gmu.schedulizer.com for them,
+    along with the aforementioned social aspects.
+    </td>
+  </tr>
+  <tr>
+    <td>
+    login
+    </td>
+    <td>
+    I'd like this page to have a bit more information, since this is the page
+    that students will eventually be directed to if they haven't logged in. It 
+    might talk about some of the features and such.
+    </td>
   </tr>
 </table>
 
