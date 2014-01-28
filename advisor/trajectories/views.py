@@ -2,8 +2,9 @@ from django.shortcuts import render, render_to_response
 from trajectories.models import Course, CourseCollection, Program, Student, Trajectory
 from django.db.models import Max
 
-# other functions
+# processing functions
 
+# run on each coursecollection
 def remainingReqCourses(requiredCourses, coursesTaken):
     """ returns remaining courses for program """
     remainingReqCourses = []
@@ -23,6 +24,7 @@ def allPrereqCoreq(course, remainingReqCourses):
                 allPrereqCoreq.append(coreq)
     return allPreqCoreq
 
+# run on each coursecollection
 def nextCourses(coursesTaken, remainingReqCourses):
      """ returns the courses student can take given what's been taken """
      nextCourses = []
@@ -102,13 +104,12 @@ def enoughCourses(coursesTaken):
     else:
         return False
 
-### IMPORTANT OUTSTANDING ISSUE ###
-# how does one deal with "you have to take the coreq at the same time?"
+# note: coreq requirements are fulfilled through onpage javascript, not here
 
 # page render functions
 
-# homepage, sign in to save or compare multiple options
-#@login_required -- not sure how this part works
+# "homepage", create a new trajectory
+#@login_required
 def index(request):
 
     return render(request, 'index.html', {
@@ -116,6 +117,7 @@ def index(request):
     },
     )
 
+# this is where all users not signed in are redirected
 def login(request):
 
     return render(request, 'login.html', {
@@ -123,7 +125,7 @@ def login(request):
     },
     )
 
-# SRCT, how to contribute information
+# SRCT, how to contribute information, how Advisor works
 def about(request):
 
     return render(request, 'about.html', {
@@ -131,7 +133,8 @@ def about(request):
     },
     )
 
-# student creates trajectory
+# student selects the classes for their trajectories
+# @login_required
 # def create(request, slug):
 def create(request):
 
@@ -144,7 +147,7 @@ def create(request):
     },
     )
 
-# just displays a page for the course
+# simply displays a page for the course
 def course(request, slug):
 
     return render(request, 'course.html', {
@@ -152,6 +155,8 @@ def course(request, slug):
     },
     )
 
+# simply displays a page for a trajectory, (along with edit links)
+# @login_required
 def trajectory(request, slug):
 # actually needs more than one slug
     
@@ -161,7 +166,7 @@ def trajectory(request, slug):
     )
 
 # student's page; shows saved trajectories
-#@login_required
+# @login_required
 def student(request, slug):
 
     student = get_object_or_404(Student, user__username=username)
@@ -187,4 +192,4 @@ def compare(request):
 
 # page like one for courses, except for programs? >_>
 
-#search for courses or programs view
+# search for courses or programs view
