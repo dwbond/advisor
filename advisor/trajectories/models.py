@@ -59,6 +59,7 @@ class CourseCollection(BaseModel):
 class Program(BaseModel):
 
     name = models.CharField(max_length = 150)
+    # slug = models.SlugField(max_length = 50, unique = True)
 
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
@@ -76,6 +77,9 @@ class Program(BaseModel):
 
     def __unicode__(self):
         return self.name
+
+    # def get_absolute_url(self):
+        # return 'my-trajectories/%s/' % self.slug
 
 # should inherit from the standard Django User Model
 class Student(models.Model):
@@ -113,10 +117,12 @@ class Trajectory(BaseModel):
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)
 
+    # def getPreviousTrajectory(Trajectory):
+        # return Trajectory
+
     isPublic = models.BooleanField()
 
-    # this isn't exactly done correctly-- ideally courses should be elements
-    # of a list, not one created for each and every semester
+    # semesters since entering college
     semester = models.IntegerField()
 
     class Meta:
