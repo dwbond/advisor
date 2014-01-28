@@ -13,6 +13,7 @@ class BaseModel(models.Model):
 class Course(BaseModel):
 
     name = models.CharField(max_length = 150)
+    slug = models.SlugField(max_length = 50, unique=True)
 
     # ordering
     prerequisites = models.ManyToManyField('Course', related_name = 'prereqField', null=True)
@@ -81,6 +82,8 @@ class Student(models.Model):
 
     user = models.OneToOneField(User)
 
+    # does User have a slug field?
+
     alreadyTaken = models.ManyToManyField('Course', null=True)
     
     trajectory = models.ManyToManyField('Trajectory', null=True)
@@ -105,6 +108,7 @@ post_save.connect(create_user_profile, sender=User)
 class Trajectory(BaseModel):
 
     name = models.CharField(max_length = 150)
+    slug = models.SlugField(max_length = 50, unique = True)
 
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)
@@ -121,5 +125,3 @@ class Trajectory(BaseModel):
 
     def get_absolute_url(self):
         return 'my-trajectories/%s/' % self.slug
-
-        return '/%s/' % self.slug
