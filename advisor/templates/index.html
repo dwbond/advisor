@@ -24,25 +24,29 @@ GMU Advisor
       <fieldset>
 
       <legend>Select your courses(s).</legend>
-      <div class="form-group">
-        <label for "departmentAbbr" class="col-sm-2">Department Abbreviation</label>
-          <div class="col-sm-1">
-            <input type="text" class="form-control" id="Program" placeholder="ENGH">
-          </div>
-        <label for "courseNumber" class="col-sm-1">Course Number</label>
-          <div class="col-sm-1">
-            <input type="text" class="form-control" id="Program" placeholder="302">
-          </div>
-        <!-- Name loads automatically -->
-	<label for "name" class="col-sm-1">Name</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="Program" placeholder="Advanced Composition">
-          </div>
-       <div class="col-sm-1">
-         <button type="button" class="btn btn-primary">+</button>
-       </div>
-       <!-- not sure how to have a zillion of these fields keep on appearing -->
-      </div>
+        {% if courses %}
+          <div class="alert alert-info">Do you need to update the courses you've already taken?</div>
+        {% else %}
+          <div class="form-group">
+            <label for "departmentAbbr" class="col-sm-2">Department Abbreviation</label>
+              <div class="col-sm-1">
+                <input type="text" class="form-control" id="Program" placeholder="ENGH">
+              </div>
+            <label for "courseNumber" class="col-sm-1">Course Number</label>
+              <div class="col-sm-1">
+                <input type="text" class="form-control" id="Program" placeholder="302">
+              </div>
+            <!-- Name loads automatically -->
+	    <label for "name" class="col-sm-1">Name</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" id="Program" placeholder="Advanced Composition">
+              </div>
+           <div class="col-sm-1">
+             <button type="button" class="btn btn-primary">+</button>
+           </div>
+           <!-- not sure how to have a zillion of these fields keep on appearing -->
+        </div>
+      {% endif %}
 
       <legend>Select your program(s).</legend>
       <div class="form-group">

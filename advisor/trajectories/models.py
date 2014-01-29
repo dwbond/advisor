@@ -26,6 +26,18 @@ class Course(BaseModel):
     courseDescription = models.TextField()
     credits = models.IntegerField()
 
+    # catalog year for the course
+    catalogYear = models.DateField()
+
+    # needs to be associated with a student, may not belong here
+    isCompleted = models.BooleanField(False)
+
+    def isUpperClass:
+      if courseNumber > 300:
+          return True:
+      else:
+          return False
+
     # available next semester?
     # CRN
     # section number
@@ -54,6 +66,13 @@ class CourseCollection(BaseModel):
     # how many of those are required
     numReq = models.IntegerField()
 
+    # function to determine if there is a difference between this and last year
+    # not everything changes-- should be able to multiple reference to one thing
+
+    # catalog year for the coursecollection
+    catalogYear = models.DateField()
+
+    # if the course collection's numreq is met
     isCompleted = models.BooleanField(False)
 
 class Program(BaseModel):
@@ -68,8 +87,15 @@ class Program(BaseModel):
     programType = models.CharField(max_length = 25)
 
     # is BA, BS, Honors
-    degreeType = models.CharField(max_length = 25)
+    # all majors must take a gened program, null for minors, geneds
+    # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
+    degreeType = models.ManyToManyField('Program', null=True)
 
+    # catalog year for the Program
+    catalogYear = models.DateField()
+    
+    # if all coursecollections' and gened requirements are satisfied, then the
+    # program is completed
     isCompleted = models.BooleanField(False)
 
     class Meta:
@@ -85,11 +111,11 @@ class Program(BaseModel):
 class Student(models.Model):
 
     user = models.OneToOneField(User)
-
     # does User have a slug field?
 
     alreadyTaken = models.ManyToManyField('Course', null=True)
     
+    # all of the student's trajectories
     trajectory = models.ManyToManyField('Trajectory', null=True)
 
     # aka username, etc should all be here
@@ -120,6 +146,10 @@ class Trajectory(BaseModel):
     # def getPreviousTrajectory(Trajectory):
         # return Trajectory
 
+    # the program(s) that this trajectory is completing
+    whichPrograms = models.ManyToManyField('Program',)
+
+    # whether or not the trajectory can be seen by others
     isPublic = models.BooleanField()
 
     # semesters since entering college

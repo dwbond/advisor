@@ -109,10 +109,11 @@ def enoughCourses(coursesTaken):
 # page render functions
 
 # this is where all users not signed in are redirected
-def login(request):
-
-    return render(request, 'login.html', {
-
+#@login_required
+def index(request):
+    courses = [] # student's courses
+    return render(request, 'index.html', {
+        "courses" : courses
     },
     )
 
