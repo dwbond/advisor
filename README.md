@@ -182,6 +182,7 @@ might talk about some of the features and such.
 
 #### Matters of Functionality
 
+* Moving things around so that they are where they are supposed to be
 * coreqs are listed with each model already, but there must be javascript on the
 page preventing students from selecting a course without selecting another in
 order for that to mean anything
@@ -228,3 +229,8 @@ getting professor information, CRNs, and what have you.
 want for that semester.
 
 ## About GMU SRCT
+
+**S**tudent-**R**un **C**omputing and **T**echnology (*SRCT*), pronounced
+"circuit") is a student organization at George Mason University which enhances
+student computing at Mason, SRCT establishes and maintains systems which provide
+specific services for Mason's community.
