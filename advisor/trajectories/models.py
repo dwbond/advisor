@@ -28,9 +28,6 @@ class Course(BaseModel):
     # catalog year for the course
     catalogYear = models.DateField()
 
-    # needs to be associated with a student, may not belong here
-    isCompleted = models.BooleanField(False)
-
     def isUpperClass:
       if courseNumber > 300:
           return True:
@@ -110,6 +107,8 @@ class Student(models.Model):
     # all of the student's trajectories
     trajectory = models.ManyToManyField('Trajectory', null=True)
 
+    completedCourses = models.ManyToManyField('Course', null=True)
+
     # aka username, etc should all be here
 
     class Meta:
@@ -138,8 +137,6 @@ class Trajectory(BaseModel):
     # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
     forPrograms = models.ManyToManyField('Program',)
 
-    # function returns if it is an end node on the tree
-    
     # whether or not the trajectory can be seen by others
     isPublic = models.BooleanField()
 
