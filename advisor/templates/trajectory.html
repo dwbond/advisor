@@ -16,11 +16,13 @@ GMU Advisor | Trajectory Name
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <legend>Trajectories</legend>
     {% for trajectory in trajectories %}
       <div class="col-md-12">
+        <!-- the semester -->
         {% for course in trajectory %}
 	  <div class="col-md-4">
+            {{ course.name }}
 
 	  </div>
         {% endfor %}

@@ -13,6 +13,7 @@ class BaseModel(models.Model):
 class Course(BaseModel):
 
     name = models.CharField(max_length = 150)
+    slug = models.SlugField(max_length = 50, unique=True)
 
     # ordering
     prerequisites = models.ManyToManyField('Course', related_name = 'prereqField', null=True)
@@ -74,6 +75,7 @@ class CourseCollection(BaseModel):
 class Program(BaseModel):
 
     name = models.CharField(max_length = 150)
+    # slug = models.SlugField(max_length = 50, unique = True)
 
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
@@ -99,11 +101,17 @@ class Program(BaseModel):
     def __unicode__(self):
         return self.name
 
+    # def get_absolute_url(self):
+        # return 'my-trajectories/%s/' % self.slug
+
 # should inherit from the standard Django User Model
 class Student(models.Model):
 
     user = models.OneToOneField(User)
+    # does User have a slug field?
 
+    alreadyTaken = models.ManyToManyField('Course', null=True)
+    
     # all of the student's trajectories
     trajectory = models.ManyToManyField('Trajectory', null=True)
 
@@ -129,19 +137,21 @@ post_save.connect(create_user_profile, sender=User)
 class Trajectory(BaseModel):
 
     name = models.CharField(max_length = 150)
+    slug = models.SlugField(max_length = 50, unique = True)
 
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)
 
+    # def getPreviousTrajectory(Trajectory):
+        # return Trajectory
+
     # the program(s) that this trajectory is completing
-    # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
-    forPrograms = models.ManyToManyField('Program',)
+    whichPrograms = models.ManyToManyField('Program',)
 
     # whether or not the trajectory can be seen by others
     isPublic = models.BooleanField()
 
-    # this isn't exactly done correctly-- ideally courses should be elements
-    # of a list, not one created for each and every semester
+    # semesters since entering college
     semester = models.IntegerField()
 
     class Meta:
@@ -150,5 +160,3 @@ class Trajectory(BaseModel):
 
     def get_absolute_url(self):
         return 'my-trajectories/%s/' % self.slug
-
-        return '/%s/' % self.slug

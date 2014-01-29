@@ -1,9 +1,10 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from trajectories.models import Course, CourseCollection, Program, Student, Trajectory
 from django.db.models import Max
 
-# other functions
+# processing functions
 
+# run on each coursecollection
 def remainingReqCourses(requiredCourses, coursesTaken):
     """ returns remaining courses for program """
     remainingReqCourses = []
@@ -23,6 +24,7 @@ def allPrereqCoreq(course, remainingReqCourses):
                 allPrereqCoreq.append(coreq)
     return allPreqCoreq
 
+# run on each coursecollection
 def nextCourses(coursesTaken, remainingReqCourses):
      """ returns the courses student can take given what's been taken """
      nextCourses = []
@@ -102,13 +104,12 @@ def enoughCourses(coursesTaken):
     else:
         return False
 
-### IMPORTANT OUTSTANDING ISSUE ###
-# how does one deal with "you have to take the coreq at the same time?"
+# note: coreq requirements are fulfilled through onpage javascript, not here
 
 # page render functions
 
-# homepage, sign in to save or compare multiple options
-#@login_required -- not sure how this part works
+# this is where all users not signed in are redirected
+#@login_required
 def index(request):
     courses = [] # student's courses
     return render(request, 'index.html', {
@@ -116,61 +117,38 @@ def index(request):
     },
     )
 
-def login(request):
+# "homepage", create a new trajectory
+#@login_required
+def index(request):
 
-    return render(request, 'login.html', {
-
-    },
-    )
-
-# SRCT, how to contribute information
-def about(request):
-
-    return render(request, 'about.html', {
+    return render(request, 'index.html', {
 
     },
     )
 
-# student creates trajectory
-# def create(request, slug):
+# student selects the classes for their trajectories
+# @login_required
+# def create(request, slug): slug is the user's
 def create(request):
 
     # needs to get list of programs from user
     programs = []
-    # 
 
     return render(request, 'create.html', {
     
     },
     )
 
-# just displays a page for the course
-def course(request, slug):
-
-    return render(request, 'course.html', {
-
-    },
-    )
-
-def trajectory(request, slug):
-# actually needs more than one slug
-    
-    return render(request, 'trajectory.html', {
-
-    },
-    )
-
 # student's page; shows saved trajectories
-#@login_required
+# @login_required
 def student(request, slug):
-
     student = get_object_or_404(Student, user__username=username)
     trajectories = Trajectory.objects.filter(student__user__username=username)
     topTrajectories = topTrajectories(trajectories)
 
     return render(request, 'student.html', {
-      'student' : student,
-      'topTrajectories' : topTrajectories,
+        'student' : student,
+        'topTrajectories' : topTrajectories,
 
     },
     )
@@ -180,11 +158,54 @@ def student(request, slug):
 # def compare(request, slug):
 def compare(request):
 
+    # this is gonna be hella slow; I need to learn how ajax works and what
+    # it will actually need
+    
+    trajectories = Trajectory.objects.all()
     return render(request, 'compare.html', {
+        'trajectories' : trajectories,
+    },
+    )
+
+# simply displays a page for the course
+def course(request, slug):
+
+    course = get_object_or_404(Course, slug=slug)
+    return render(request, 'course.html', {
+        'course' : course,
+    },
+    )
+
+# simply returns a page showing a program
+# def program (request, slug):
+
+    # program = get_object_or_404(Program, slug=slug)
+    # return render(request, 'program.html, {
+        # 'program' : program,
+    # },
+    # )
+
+# simply displays a page for an individual trajectory, (along with edit links)
+# @login_required
+def trajectory(request, slug):
+# actually needs more than one slug, the one for the user
+
+    trajectory = get_object_or_404(Trajectory, slug=slug) 
+    return render(request, 'trajectory.html', {
+        'trajectory' : trajectory,
+    },
+    )
+
+# search
+
+# # # # # STATIC PAGES # # # # #
+
+# SRCT, how to contribute information, how Advisor works
+def about(request):
+
+    return render(request, 'about.html', {
 
     },
     )
 
-# page like one for courses, except for programs? >_>
-
-#search for courses or programs view
+# def privacy(request):
