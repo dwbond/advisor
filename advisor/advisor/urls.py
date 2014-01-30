@@ -2,7 +2,12 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('trajectories.views',
+from django.contrib.auth.views import login, logout
+
+from advisor.views import about, index
+#, login?
+
+urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'advisor.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
@@ -24,23 +29,6 @@ urlpatterns = patterns('trajectories.views',
 
     # about page
     url(r'^about/$', 'about', name = 'about'),
-
-    # course
-    url(r'^course/(?P<courseName>\w+)/$', 'course', name = 'course'),
-
-    # student's page
-    url(r'^user/(?P<username>\w+)/$', 'student', name = 'student'),
-
-    # single trajectory page
-    url(r'^user/(?P<username>\w+)/(?P<trajectoryslug>\w+)$', 'trajectory', name = 'trajectory'),
-
-    # creating the trajectory
-    # url(r'^user/(?P<username>\w+)/create/$', 'create', name = 'create'),
-    url(r'^create/$', 'create', name = 'create'),
-
-    # comparison page
-    # url(r'^user/(?P<username>\w+)/compare/$', 'compare', name = 'compare'),
-    url(r'^compare/$', 'compare', name = 'compare'),
 
     # admin pages
     url(r'^admin/', include(admin.site.urls)),
