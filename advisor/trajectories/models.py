@@ -13,7 +13,7 @@ class BaseModel(models.Model):
 class Course(BaseModel):
 
     name = models.CharField(max_length = 150)
-    slug = models.SlugField(max_length = 50, unique=True)
+    courseSlug = models.SlugField(max_length = 50, unique=True)
 
     # ordering
     prerequisites = models.ManyToManyField('Course', related_name = 'prereqField', null=True)
@@ -75,7 +75,7 @@ class CourseCollection(BaseModel):
 class Program(BaseModel):
 
     name = models.CharField(max_length = 150)
-    # slug = models.SlugField(max_length = 50, unique = True)
+    # programSlug = models.SlugField(max_length = 50, unique = True)
 
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
@@ -137,7 +137,7 @@ post_save.connect(create_user_profile, sender=User)
 class Trajectory(BaseModel):
 
     name = models.CharField(max_length = 150)
-    slug = models.SlugField(max_length = 50, unique = True)
+    trajectorySlug = models.SlugField(max_length = 50, unique = True)
 
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)

@@ -159,7 +159,7 @@ def student(request, slug):
 
 # simply displays a page for the course
 def course(request, slug):
-    course = get_object_or_404(Course, slug=slug)
+    course = get_object_or_404(Course, slug=slug) #courseSlug
 
     return render(request, 'course.html', {
         'course' : course,
@@ -169,7 +169,7 @@ def course(request, slug):
 # simply returns a page showing a program
 # @login_required
 def program (request):
-    program = get_object_or_404(Program, slug=slug)
+    program = get_object_or_404(Program, slug=slug) #programSlug
     
     return render(request, 'program.html', {
         'program' : program,
@@ -180,7 +180,7 @@ def program (request):
 # @login_required
 def trajectory(request, slug):
 # actually needs more than one slug, the one for the user
-    trajectory = get_object_or_404(Trajectory, slug=slug) 
+    trajectory = get_object_or_404(Trajectory, slug=slug) #trajectorySlug 
     
     return render(request, 'trajectory.html', {
         'trajectory' : trajectory,
