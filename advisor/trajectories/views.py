@@ -108,23 +108,13 @@ def enoughCourses(coursesTaken):
 
 # page render functions
 
-# this is where all users not signed in are redirected
-#@login_required
-def index(request):
-    courses = [] # student's courses
-    return render(request, 'index.html', {
-        "courses" : courses
-    },
-    )
+# a page for creating new trajectories
+# @login_required
+def new(request):
 
-# "homepage", create a new trajectory
-#@login_required
-def index(request):
+    return render(request, 'new.html', {
 
-    return render(request, 'index.html', {
-
-    },
-    )
+    }
 
 # student selects the classes for their trajectories
 # @login_required
@@ -195,17 +185,3 @@ def trajectory(request, slug):
         'trajectory' : trajectory,
     },
     )
-
-# search
-
-# # # # # STATIC PAGES # # # # #
-
-# SRCT, how to contribute information, how Advisor works
-def about(request):
-
-    return render(request, 'about.html', {
-
-    },
-    )
-
-# def privacy(request):
