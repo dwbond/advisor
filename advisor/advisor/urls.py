@@ -30,6 +30,9 @@ urlpatterns = patterns('',
     # about page
     url(r'^about/$', 'about', name = 'about'),
 
+    # privacy page
+    url(r'^privacy/$', 'privacy', name = 'privacy'),
+
     # admin pages
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
