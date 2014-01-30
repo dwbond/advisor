@@ -1,7 +1,4 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
-admin.autodiscover()
-
 from analysis.views import compare, analytics
 
 urlpatterns = patterns('',

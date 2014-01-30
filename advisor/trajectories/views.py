@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from trajectories.models import Course, CourseCollection, Program, Student, Trajectory
 from django.db.models import Max
 
@@ -97,12 +97,24 @@ def topTrajectories(trajectories):
 
     return topTrajectories
 
-def enoughCourses(coursesTaken):
+def enoughCourses(coursesTaken, degreeCreditsReqNum):
     """ required credits for degree program """
-    if len(coursesTaken) > 120:
+    if len(coursesTaken) > degreeCreditsReqNum: #120
         return True
     else:
         return False
+
+#def enoughUpperLevelCourses(coursesTaken, upperLevelReqNum):
+#    """ required upper level courses for program """
+#    upperLevelCourses = []
+#    for course in coursesTaken:
+#        if course.isUpperClass:
+#            course.append(upperLevelCourses)
+#
+#    if len(upperLevelCourses > upperLevelNum):
+#        return True
+#    else:
+#        return False
 
 # note: coreq requirements are fulfilled through onpage javascript, not here
 
@@ -111,9 +123,12 @@ def enoughCourses(coursesTaken):
 # a page for creating new trajectories
 # @login_required
 def new(request):
+    programs = Program.objects.all()
+    courses = Course.objects.all()
+    # select year
 
     return render(request, 'new.html', {
-
+        'programs' : programs,
     }
 
 # student selects the classes for their trajectories
@@ -121,8 +136,7 @@ def new(request):
 # def create(request, slug): slug is the user's
 def create(request):
 
-    # needs to get list of programs from user
-    programs = []
+    # programs = theProgramThatWasJustSelected 
 
     return render(request, 'create.html', {
     
@@ -143,44 +157,31 @@ def student(request, slug):
     },
     )
 
-# compares saved trajectories
-#@login_required
-# def compare(request, slug):
-def compare(request):
-
-    # this is gonna be hella slow; I need to learn how ajax works and what
-    # it will actually need
-    
-    trajectories = Trajectory.objects.all()
-    return render(request, 'compare.html', {
-        'trajectories' : trajectories,
-    },
-    )
-
 # simply displays a page for the course
 def course(request, slug):
-
     course = get_object_or_404(Course, slug=slug)
+
     return render(request, 'course.html', {
         'course' : course,
     },
     )
 
 # simply returns a page showing a program
-# def program (request, slug):
-
-    # program = get_object_or_404(Program, slug=slug)
-    # return render(request, 'program.html, {
-        # 'program' : program,
-    # },
-    # )
+# @login_required
+def program (request):
+    program = get_object_or_404(Program, slug=slug)
+    
+    return render(request, 'program.html', {
+        'program' : program,
+    },
+    )
 
 # simply displays a page for an individual trajectory, (along with edit links)
 # @login_required
 def trajectory(request, slug):
 # actually needs more than one slug, the one for the user
-
     trajectory = get_object_or_404(Trajectory, slug=slug) 
+    
     return render(request, 'trajectory.html', {
         'trajectory' : trajectory,
     },

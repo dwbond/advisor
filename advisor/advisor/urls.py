@@ -2,9 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from django.contrib.auth.views import login, logout
-
-from advisor.views import about, index
+# from django.contrib.auth.views import login, logout
+from advisor.views import index, about, privacy
 #, login?
 
 urlpatterns = patterns('',

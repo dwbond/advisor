@@ -1,6 +1,6 @@
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from trajectories.models import Course, CourseCollection, Program, Student, Trajectory
-from django.db.models import Max
+# import login
 
 # processing functions
 
@@ -19,5 +19,14 @@ def compare(request):
     trajectories = Trajectory.objects.all()
     return render(request, 'compare.html', {
         'trajectories' : trajectories,
+    },
+    )
+
+#@login_required
+# def analytics(request, slug):
+def analytics(request):
+
+    return render(request, 'analytics.html', {
+
     },
     )
