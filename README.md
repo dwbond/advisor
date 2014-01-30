@@ -73,6 +73,20 @@ up when you did the `syncdb` command.
 
 ## How Advisor Works
 
+### Apps
+
+#### Advisor
+
+This app is the base for the whole project, such as things that apply to everything go here, including the index page, the login page, etc. It also manages the other apps, e.g. all of the collected urls are managed here.
+
+#### Trajectories
+
+This is where students create and manage their trajectories, as well as view courses and programs.
+
+#### Analysis
+
+Here students can compare their trajectories, or look at analyses of their and everyone's trajectory and program information.
+
 ### Models
 
 Model fields are pretty well commented up, but here's a high-level view on how 
