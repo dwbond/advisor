@@ -77,11 +77,11 @@ class Program(BaseModel):
     name = models.CharField(max_length = 150)
     # programSlug = models.SlugField(max_length = 50, unique = True)
 
-    # courseCollections
-    courseReqs =  models.ManyToManyField('CourseCollection',)
-
     # major or minor or gened
     programType = models.CharField(max_length = 25)
+
+    # courseCollections
+    courseReqs =  models.ManyToManyField('CourseCollection',)
 
     # is BA, BS, Honors
     # all majors must take a gened program, null for minors, geneds

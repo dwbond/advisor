@@ -17,16 +17,37 @@ class StyledSeachForm( SearchForm ):
         }),
     )
 
+# class SelectYourCourses( ModelForm ):
+
+    # class Meta:
+        # models = Course
+
+	# widgets = {
+	    # department abbreviation
+
+	    # course number
+
+	    # name
+
 class NewTrajectoryForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
 
     class Meta:
         model = Trajectory
-        fields = (
+        fields = ('name', 'degreeType', 'programType',
         )
-        exclude = (
+        exclude = ('courseReqs', 'created', 'last_modified', 'catalogYear',
+	    'isCompleted',
         )
-        labels = {
-        }
         widgets = {
+	    # name of major(s)
+            'name' : TextInput(attrs={
+	        'class' : 'form-control',
+		'placeholder' : 'Government and International Politics',
+	    }),
+            # name of minor(s)
+            
+	    # are you in the honors college?
+
+	    # current semester
         }
