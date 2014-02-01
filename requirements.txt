@@ -1,11 +1,5 @@
 Django==1.6
 South==0.8.4
-argparse==1.2.1
-django-auth-ldap==1.1.7
-python-ldap==2.4.13
-wsgiref==0.1.2
-Django==1.6
-South==0.8.4
 Whoosh==2.5.6
 argparse==1.2.1
 django-auth-ldap==1.1.7
