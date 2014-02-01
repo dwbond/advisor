@@ -2,15 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from django.contrib.auth.views import login, logout
-from advisor.views import index, about, privacy
+# from django.contrib.auth.views import login, logout
+#from advisor.views import index, about, privacy
 #, login?
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'advisor.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+urlpatterns = patterns('advisor.views',
     # URL Schema:
     # /                - homepage
     # /about           - about page
