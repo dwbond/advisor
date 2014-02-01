@@ -35,11 +35,11 @@ urlpatterns = patterns('',
     # admin pages
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-)
 
     # App sub-urls
     url(r'^trajectory/', include('trajectories.urls')),
-    url(r'^analysis/', include('analysis.urls'))
+    url(r'^analysis/', include('analysis.urls')),
+)
 
 urlpatterns += patterns('django.contrib.auth.views',
     # auth pages

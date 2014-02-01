@@ -129,7 +129,8 @@ def new(request):
 
     return render(request, 'new.html', {
         'programs' : programs,
-    }
+    },
+    )
 
 # student selects the classes for their trajectories
 # @login_required
