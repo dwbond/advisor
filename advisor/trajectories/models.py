@@ -29,9 +29,9 @@ class Course(BaseModel):
     # catalog year for the course
     catalogYear = models.DateField()
 
-    def isUpperClass:
+    def isUpperClass(coursenumber):
       if courseNumber > 300:
-          return True:
+          return True
       else:
           return False
 
@@ -77,9 +77,6 @@ class Program(BaseModel):
     name = models.CharField(max_length = 150)
     # programSlug = models.SlugField(max_length = 50, unique = True)
 
-    # major or minor or gened
-    programType = models.CharField(max_length = 25)
-
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
 
@@ -87,6 +84,9 @@ class Program(BaseModel):
     # all majors must take a gened program, null for minors, geneds
     # CHECK VIEWS, MAKE SURE I DIDN'T ALREADY SOMEHOW ACCOUNT FOR THIS
     degreeType = models.ManyToManyField('Program', null=True)
+
+    # major or minor or gened
+    programType = models.CharField(max_length = 25)
 
     # catalog year for the Program
     catalogYear = models.DateField()
@@ -110,11 +110,10 @@ class Student(models.Model):
     user = models.OneToOneField(User)
     # does User have a slug field?
 
-    alreadyTaken = models.ManyToManyField('Course', null=True)
-    
     # all of the student's trajectories
     trajectory = models.ManyToManyField('Trajectory', null=True)
 
+    # a big ol' list of courses the student has already completed
     completedCourses = models.ManyToManyField('Course', null=True)
 
     # aka username, etc should all be here
