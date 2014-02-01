@@ -2,11 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-# from django.contrib.auth.views import login, logout
-#from advisor.views import index, about, privacy
+from django.contrib.auth.views import login, logout
+from advisor.views import index, about, privacy
 #, login?
 
-urlpatterns = patterns('advisor.views',
+urlpatterns = patterns('',
     # URL Schema:
     # /                - homepage
     # /about           - about page
@@ -17,16 +17,16 @@ urlpatterns = patterns('advisor.views',
     # /admin           - administrator portal
 
     # homepage
-    url(r'^$', 'index', name = 'homepage'),
-
-    # log in
-    url(r'^login/$', 'login', name = 'login'),
+    url(r'^$', index, name = 'homepage'),
 
     # about page
-    url(r'^about/$', 'about', name = 'about'),
+    url(r'^about/$', about, name = 'about'),
 
     # privacy page
-    url(r'^privacy/$', 'privacy', name = 'privacy'),
+    url(r'^privacy/$', privacy, name = 'privacy'),
+
+    # log in
+    url(r'^login/$', login, name = 'login'),
 
     # admin pages
     url(r'^admin/', include(admin.site.urls)),
