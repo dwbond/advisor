@@ -80,8 +80,6 @@ class Program(BaseModel):
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
 
-    isHonors = models.BooleanField(False),
-
     # is BA, BS, Honors
     # all majors must take a gened program, null for minors, geneds
     degreeType = models.ManyToManyField('Program', null=True)
@@ -114,10 +112,12 @@ class Student(models.Model):
     # aka username, etc should all be here
     
     # all of the student's trajectories
-    trajectory = models.ManyToManyField('Trajectory', null=True)
+    trajectories = models.ManyToManyField('Trajectory', null=True)
 
     # a big ol' list of courses the student has already completed
     completedCourses = models.ManyToManyField('Course', null=True)
+
+    isHonors = models.BooleanField(False),
 
     semester = models.IntegerField()
 
