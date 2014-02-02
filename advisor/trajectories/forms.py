@@ -43,8 +43,8 @@ class NewTrajectoryForm( ModelForm ):
 	    'isCompleted', 'programType', 'degreeType',
         )
         labels = {
-            'name' : 'Select your Majors'
-            #'name' : 'Select your Minor'
+            'name' : 'Program(s)'
+            'name' : 'Minor(s)'
         }
         widgets = {
             # I know you can't actually have it assigned twice...

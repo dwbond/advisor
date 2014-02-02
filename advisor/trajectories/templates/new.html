@@ -25,10 +25,14 @@ start visualizing your way to completing your degree.</h4></p>
       <fieldset>
 
       <legend>Select your program(s).</legend>
-      <div class="form-group">
-        <label for "Program" class="col-sm-2">Program</label>
+      <div class="form-group{% if new_trajectory_form.name.errors %} has-error {% endif %}">
+        <label for "{{new_trajectory_form.name.id_for_label}}" class="col-sm-2">
+	{{new_trajectory_form.name.id_for_label}}</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="Program" placeholder="Government and International Politics">
+	    {{new_trajectory_form.name}}
+	    {% for error in new_trajectory_form.name.errors %}
+	        <span class="help-block">{{ error }}</span>
+	    {% endfor %}
 	    <!-- autocompletion would be awesome -->
         </div>
          <div class="col-sm-1">
@@ -36,17 +40,26 @@ start visualizing your way to completing your degree.</h4></p>
         </div>
       </div>
 
+      <!-- Javascript for adding an additional field -->
+
       <legend>Select your minor(s).</legend>
-      <div class="form-group">
-        <label for "Minor" class="col-sm-2">Minor</label>
+      <div class="form-group{% if new_trajectory_form.name.errors %} has-error {% endif %}">
+        <label for "{{new_trajectory_form.name.id_for_label}}" class="col-sm-2">
+	{{new_trajectory_form.name.id_for_label}}</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="Minors" placeholder="Software Engineering">
+	    {{new_trajectory_form.name}}
+	    {% for error in new_trajectory_form.name.errors %}
+	        <span class="help-block">{{ error }}</span>
+	    {% endfor %}
+	    <!-- autocompletion would be awesome -->
         </div>
-        <div class="col-sm-1">
+         <div class="col-sm-1">
           <button type="button" class="btn btn-primary">+</button>
         </div>
       </div>
 
+      <!-- Javascript for adding an additional field -->
+      
       <div class="form-group">
         <div class="col-sm-offset-11 col-sm-1">
           <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
@@ -57,5 +70,5 @@ start visualizing your way to completing your degree.</h4></p>
     </form>
   </div>
 </div>
-<p>*Not intended as a replacement for formal academic advising through your department.</p>
+<p><small>*Not intended as a replacement for formal academic advising through your department.</small></p>
 {% endblock %}
