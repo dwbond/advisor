@@ -34,12 +34,17 @@ class NewTrajectoryForm( ModelForm ):
 
     class Meta:
         model = Program
-        fields = ('name', 'degreeType', 'programType', 'isHonors',
+        fields = ('name',
         )
         exclude = ('courseReqs', 'created', 'last_modified', 'catalogYear',
-	    'isCompleted',
+	    'isCompleted', 'programType', 'degreeType',
         )
+        labels = {
+            'name' : 'Select your Majors'
+            #'name' : 'Select your Minor'
+        }
         widgets = {
+            # I know you can't actually have it assigned twice...
 	    # name of major(s)
             'name' : TextInput(attrs={
 	        'class' : 'form-control',
@@ -54,4 +59,34 @@ class NewTrajectoryForm( ModelForm ):
 
 # class CreateTrajectoryForm ( ModelForm ):
 
-# class StudentInfoForm( ModelForm ):
+class StudentInfoForm( ModelForm ):
+    # def __init__(self, *args, **kwargs):
+
+    class Meta:
+        model = Student
+        fields = ('completedCourses', 'isHonors', 'semester',
+        )
+        exclude = ('user', 'trajectories',
+        )
+        labels = {
+            'completedCourses' : 'Completed Courses',
+            'isHonors' : 'Are you in the Honors College?',
+            'semester' : 'Semester',
+        }
+        widgets = {
+            # this should be done above, but I don't know how that works with the models ^^^
+            'completedCourses' : TextInput(attrs={
+                'class' : 'form-control',
+                'placeholder' = 'Type in courses you\'ve taken',
+            }),
+            # is the student honors?
+            'isHonors' : CheckboxInput(attrs={
+                'class' = 'form-control',
+            }),
+
+            # semester
+            'semester' : TextInput(attrs={
+                'class' : 'form-control',
+                'placeholder' : 'What year are you?'
+            }),
+        }
