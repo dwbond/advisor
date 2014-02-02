@@ -144,6 +144,9 @@ class Trajectory(BaseModel):
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)
 
+    # the newly added courses for that trajectory
+    courses = models.ManyToManyField('Course',)
+
     # def getPreviousTrajectory(Trajectory):
         # return Trajectory
 

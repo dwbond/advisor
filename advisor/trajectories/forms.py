@@ -19,6 +19,8 @@ class StyledSeachForm( SearchForm ):
 
 # class SelectYourCourses( ModelForm ):
 
+    # needs to connect with a Student's completedCourses field
+
     # class Meta:
         # models = Course
 
@@ -28,6 +30,7 @@ class StyledSeachForm( SearchForm ):
 	    # course number
 
 	    # name
+        # }
 
 class NewTrajectoryForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
@@ -58,6 +61,35 @@ class NewTrajectoryForm( ModelForm ):
         }
 
 # class CreateTrajectoryForm ( ModelForm ):
+    # def __init__(self, *args, **kwargs):
+
+# the user selects the courses they are allowed to take but
+# this needs to be presented in a dramatically different way than
+# just some silly dropdown
+    class Meta:
+        model = Trajectory
+        fields = ('name', 'courses',
+        )
+        exclude = ('trajectorySlug', 'previousCourses', 'whichPrograms',
+        'isPublic', 'semester'
+        )
+        labels = (
+        # the courses need to be sorted by their associated program, so idk labels
+        )
+        widgets = {
+            # name of the trajectory
+            'name' : TextInput(attrs={
+                'class' : 'form-control',
+                # this shouldn't change often
+                'placeholder' = 'Name Your Trajectory',
+            }),
+            # course names... this isn't probably right
+            # users select and save tiles...
+            'name' : TextInput(attrs={
+                'class' : 'form-control',
+                'placeholder' = 'Name Your Trajectory',
+            }),
+        }
 
 class StudentInfoForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
@@ -77,11 +109,11 @@ class StudentInfoForm( ModelForm ):
             # this should be done above, but I don't know how that works with the models ^^^
             'completedCourses' : TextInput(attrs={
                 'class' : 'form-control',
-                'placeholder' = 'Type in courses you\'ve taken',
+                'placeholder' : 'Type in courses you\'ve taken',
             }),
             # is the student honors?
             'isHonors' : CheckboxInput(attrs={
-                'class' = 'form-control',
+                'class' : 'form-control',
             }),
 
             # semester
