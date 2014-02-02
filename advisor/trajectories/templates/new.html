@@ -24,32 +24,6 @@ start visualizing your way to completing your degree.</h4></p>
       {% csrf_token %}
       <fieldset>
 
-      <!-- move to a user manage page form -->
-      <legend>Select your courses(s).</legend>
-        {% if courses %}
-          <div class="alert alert-info">Do you need to update the courses you've already taken?</div>
-        {% else %}
-          <div class="form-group">
-            <label for "departmentAbbr" class="col-sm-2">Department Abbreviation</label>
-              <div class="col-sm-1">
-                <input type="text" class="form-control" id="Program" placeholder="ENGH">
-              </div>
-            <label for "courseNumber" class="col-sm-1">Course Number</label>
-              <div class="col-sm-1">
-                <input type="text" class="form-control" id="Program" placeholder="302">
-              </div>
-            <!-- Name loads automatically -->
-	    <label for "name" class="col-sm-1">Name</label>
-              <div class="col-sm-5">
-                <input type="text" class="form-control" id="Program" placeholder="Advanced Composition">
-              </div>
-           <div class="col-sm-1">
-             <button type="button" class="btn btn-primary">+</button>
-           </div>
-           <!-- not sure how to have a zillion of these fields keep on appearing -->
-        </div>
-      {% endif %}
-
       <legend>Select your program(s).</legend>
       <div class="form-group">
         <label for "Program" class="col-sm-2">Program</label>
@@ -72,40 +46,7 @@ start visualizing your way to completing your degree.</h4></p>
           <button type="button" class="btn btn-primary">+</button>
         </div>
       </div>
-     
-      <!-- this is going to be moved to a manage user page form -->
 
-      <legend>Are you in the Honors College?</legend>
-      <div class="form-group">
-        <label for "honorscollege" class="col-sm-2">Honors</label>
-          <div class="col-sm-5">
-            <button type="button" class="btn btn-default">Yes</button>
-            <button type="button" class="btn btn-primary">No</button>
-          </div>
-      </div>
-
-      <!-- this is going to be moved to a manage user page form -->
-
-      <legend>What is your current semester?</legend>
-      <div class="form-group">
-        <label for "degreeType" class="col-sm-2">Current Semester</label>
-          <div class="col-sm-3">
-            <select class="form-control">
-	      <option>First Semester Freshman</option>
-	      <option>Second Semester Freshman </option>
-	      <option>First Semester Sophomore</option>
-	      <option>Second Semester Sophomore</option>
-	      <option>First Semester Junior</option>
-	      <option>Second Semester Junior</option>
-	      <option>First Semester Senior</option>
-	      <option>Second Semester Senior</option>
-	      <option>First Semester SuperSenior</option>
-	      <option>Second Semester SuperSenior</option>
-	      <option>First Semester SuperSuperSenior</option>
-	      <!-- option You Mayyyyy Want to Consider Seeing an Actual Person /option -->
-	  </select>
-          </div>
-      </div>
       <div class="form-group">
         <div class="col-sm-offset-11 col-sm-1">
           <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
