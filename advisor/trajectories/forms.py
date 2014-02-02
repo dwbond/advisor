@@ -33,8 +33,8 @@ class NewTrajectoryForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
 
     class Meta:
-        model = Trajectory
-        fields = ('name', 'degreeType', 'programType',
+        model = Program
+        fields = ('name', 'degreeType', 'programType', 'isHonors',
         )
         exclude = ('courseReqs', 'created', 'last_modified', 'catalogYear',
 	    'isCompleted',
@@ -46,8 +46,12 @@ class NewTrajectoryForm( ModelForm ):
 		'placeholder' : 'Government and International Politics',
 	    }),
             # name of minor(s)
-            
-	    # are you in the honors college?
-
-	    # current semester
+            'name' : TextInput(attrs={
+                'class' : 'form-control',
+                'placeholder' = 'Software Engineering',
+            }),
         }
+
+# class CreateTrajectoryForm ( ModelForm ):
+
+# class StudentInfoForm( ModelForm ):

@@ -24,6 +24,7 @@ start visualizing your way to completing your degree.</h4></p>
       {% csrf_token %}
       <fieldset>
 
+      <!-- move to a user manage page form -->
       <legend>Select your courses(s).</legend>
         {% if courses %}
           <div class="alert alert-info">Do you need to update the courses you've already taken?</div>
@@ -71,9 +72,9 @@ start visualizing your way to completing your degree.</h4></p>
           <button type="button" class="btn btn-primary">+</button>
         </div>
       </div>
-      <!-- #cooljsideas for this and select program, have a new field slide out
-      when one has been entered (2 for degree, 3 for minor)-->
-      
+     
+      <!-- this is going to be moved to a manage user page form -->
+
       <legend>Are you in the Honors College?</legend>
       <div class="form-group">
         <label for "honorscollege" class="col-sm-2">Honors</label>
@@ -83,7 +84,7 @@ start visualizing your way to completing your degree.</h4></p>
           </div>
       </div>
 
-      <!-- also make this an optional field: e.g. we think you're a second semester junior... is that still the case? -->
+      <!-- this is going to be moved to a manage user page form -->
 
       <legend>What is your current semester?</legend>
       <div class="form-group">
