@@ -32,7 +32,7 @@ class StyledSeachForm( SearchForm ):
 	    # name
         # }
 
-class NewTrajectoryForm( ModelForm ):
+class CreatePersonalProgramListForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
 
     class Meta:
@@ -90,6 +90,8 @@ class NewTrajectoryForm( ModelForm ):
                 'placeholder' = 'Name Your Trajectory',
             }),
         }
+class BuildTrajectoryForm(ModelForm):
+    model = Trajectory
 
 class StudentInfoForm( ModelForm ):
     # def __init__(self, *args, **kwargs):

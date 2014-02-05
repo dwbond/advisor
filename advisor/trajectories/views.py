@@ -6,10 +6,10 @@ from trajecgtories.utils import *
 
 from braces.views import LoginRequiredMixin
 # a page for creating new trajectories
-# @login_required
-def create_trajectory(LoginRequiredMixin, CreateView):
-    model = Trajectory
-    form = CreateTrajectoryForm
+@login_required
+def new_list_of_programs(FormView):
+    template_name = 'new.html'
+    form = CreatePersonalProgramListForm 
 
     #programs = Program.objects.all()
     #courses = Course.objects.all()
@@ -18,7 +18,8 @@ def create_trajectory(LoginRequiredMixin, CreateView):
 # "Build"
 def update_trajectory(LoginRequiredMixin, UpdateView):
     model = Trajectory
-    form = UpdateTrajectoryForm
+    form = BuildTrajectoryForm
+    template_name = 'build.html'
 
 # student's page; shows saved trajectories
 # @login_required
