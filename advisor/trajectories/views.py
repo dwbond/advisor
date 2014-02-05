@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from trajectories.models import Course, CourseCollection, Program, Student, Trajectory
 from django.db.models import Max
 
+from trajectories.models import Course, CourseCollection, Program, Student, Trajectory
+from trajecgtories.utils import *
+
+from braces.views import LoginRequiredMixin
 # processing functions
 
 # run on each coursecollection
@@ -122,68 +125,45 @@ def enoughCourses(coursesTaken, degreeCreditsReqNum):
 
 # a page for creating new trajectories
 # @login_required
-def new(request):
-    programs = Program.objects.all()
-    courses = Course.objects.all()
+def create_trajectory(LoginRequiredMixin, CreateView):
+    model = Trajectory
+    form = CreateTrajectoryForm
+
+    #programs = Program.objects.all()
+    #courses = Course.objects.all()
     # select year
 
-    return render(request, 'new.html', {
-        'programs' : programs,
-    },
-    )
-
-# student selects the classes for their trajectories
-# @login_required
-# def create(request, slug): slug is the user's
-def create(request):
-
-    # programs = theProgramThatWasJustSelected 
-
-    return render(request, 'create.html', {
-    
-    },
-    )
+# "Build"
+def update_trajectory(LoginRequiredMixin, UpdateView):
+    model = Trajectory
+    form = UpdateTrajectoryForm
 
 # student's page; shows saved trajectories
 # @login_required
-def student(request, slug):
-    student = get_object_or_404(Student, user__username=username)
+
+def detail_student(LoginRequiredMixin, DetailView):
+    model = Student
     trajectories = Trajectory.objects.filter(student__user__username=username)
     topTrajectories = topTrajectories(trajectories)
 
-    return render(request, 'student.html', {
-        'student' : student,
-        'topTrajectories' : topTrajectories,
-
-    },
-    )
-
 # simply displays a page for the course
-def course(request, slug):
-    course = get_object_or_404(Course, slug=slug) #courseSlug
-
-    return render(request, 'course.html', {
-        'course' : course,
-    },
-    )
+def detail_course(DetailView):
+    model = Course
 
 # simply returns a page showing a program
 # @login_required
-def program (request):
-    program = get_object_or_404(Program, slug=slug) #programSlug
-    
-    return render(request, 'program.html', {
-        'program' : program,
-    },
-    )
+def detail_program(DetailView):
+    model = Program
+
+def detail_trajectory(LoginRequiredMixin, DetailView):
+    model = Trajectory
+
+def list_trajectory(LoginRequiredMixin, ListView):
+    model = Trajectory
+
+def list_program(ListView):
+    model = Program
 
 # simply displays a page for an individual trajectory, (along with edit links)
 # @login_required
-def trajectory(request, slug):
 # actually needs more than one slug, the one for the user
-    trajectory = get_object_or_404(Trajectory, slug=slug) #trajectorySlug 
-    
-    return render(request, 'trajectory.html', {
-        'trajectory' : trajectory,
-    },
-    )

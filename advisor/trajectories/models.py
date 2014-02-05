@@ -145,6 +145,7 @@ class Trajectory(TimeStampedModel):
 
     name = models.CharField(max_length = 150)
     slug = AutoSlugField(populate_from='name',unique=True)
+    owner = models.ForeignKey(User)
 
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)
