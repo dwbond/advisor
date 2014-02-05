@@ -1,19 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 from django.db.models.signals import post_save
 
-class BaseModel(models.Model):
-    created = models.DateTimeField('Created', auto_now_add=True, editable=False)
-    last_modified = models.DateTimeField('Last Modified', auto_now=True)
+from model_uitls.models import TimeStampedModel
+from autoslug import AutoSlugField 
 
-    class Meta:
-        abstract = True
-
-class Course(BaseModel):
+class Course(TimeStampedModel):
 
     name = models.CharField(max_length = 150)
-    courseSlug = models.SlugField(max_length = 50, unique=True)
+    courseSlug = AutoSlugField(populate_from='name', unique=True)
 
     # ordering
     prerequisites = models.ManyToManyField('Course', related_name = 'prereqField', null=True)
@@ -49,11 +44,11 @@ class Course(BaseModel):
     def __unicode__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return '/courses/%s/' % self.slug
+    #def get_absolute_url(self):
+     #   return '/courses/%s/' % self.slug
 
 # gen eds are coursecollections in programs
-class CourseCollection(BaseModel):
+class CourseCollection(TimeStampedModel):
 
     name = models.CharField(max_length = 150)
 
@@ -72,20 +67,15 @@ class CourseCollection(BaseModel):
     # if the course collection's numreq is met
     isCompleted = models.BooleanField(False)
 
-class Program(BaseModel):
+class Program(TimeStampedModel):
 
     name = models.CharField(max_length = 150)
-    # programSlug = models.SlugField(max_length = 50, unique = True)
+    slug = AutoSlugField(populate_from='name',unique=True)
 
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
-
     # is BA, BS, Honors
     # all majors must take a gened program, null for minors, geneds
-    degreeType = models.ManyToManyField('Program', null=True)
-
-    # major or minor or gened
-    programType = models.CharField(max_length = 25)
 
     # catalog year for the Program
     catalogYear = models.DateField()
@@ -95,6 +85,7 @@ class Program(BaseModel):
     isCompleted = models.BooleanField(False)
 
     class Meta:
+        abstract = True
         ordering = ('name',)
 
     def __unicode__(self):
@@ -102,6 +93,20 @@ class Program(BaseModel):
 
     # def get_absolute_url(self):
         # return 'my-trajectories/%s/' % self.slug
+class Major(Program):
+    degreeType = models.ForeignKey('GenEd')
+
+    class Meta:
+        pass
+
+class Minor(Program):
+    major = models.ForeignKey('Major') 
+
+    class Meta:
+        pass
+
+class GenEd(Program):
+    pass
 
 # should inherit from the standard Django User Model
 class Student(models.Model):
@@ -136,10 +141,10 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_user_profile, sender=User)
 
-class Trajectory(BaseModel):
+class Trajectory(TimeStampedModel):
 
     name = models.CharField(max_length = 150)
-    trajectorySlug = models.SlugField(max_length = 50, unique = True)
+    slug = AutoSlugField(populate_from='name',unique=True)
 
     # Takes courses
     previousCourses = models.ManyToManyField('Trajectory',)
