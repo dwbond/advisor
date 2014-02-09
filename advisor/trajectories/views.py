@@ -5,48 +5,44 @@ from trajectories.models import Course, CourseCollection, Program, Student, Traj
 from trajecgtories.utils import *
 
 from braces.views import LoginRequiredMixin
-# a page for creating new trajectories
-@login_required
-def new_list_of_programs(FormView):
-    template_name = 'new.html'
-    form = CreatePersonalProgramListForm 
 
-    #programs = Program.objects.all()
-    #courses = Course.objects.all()
-    # select year
+# create a new trajectory
+def NewTrajectory(LoginRequiredMixin, CreateView):
+    model = Trajectory
+    form = CreateTrajectoryForm
 
-# "Build"
-def update_trajectory(LoginRequiredMixin, UpdateView):
+# build the trajectory
+def BuildTrajectory(LoginRequiredMixin, UpdateView):
     model = Trajectory
     form = BuildTrajectoryForm
-    template_name = 'build.html'
 
 # student's page; shows saved trajectories
-# @login_required
-
-def detail_student(LoginRequiredMixin, DetailView):
+def StudentDetail(LoginRequiredMixin, DetailView):
     model = Student
-    trajectories = Trajectory.objects.filter(student__user__username=username)
-    topTrajectories = topTrajectories(trajectories)
 
-# simply displays a page for the course
-def detail_course(DetailView):
+# student can edit their information, such as previous classes or isHonors
+def StudentUpdate(LoginRequiredMixin, UpdateView):
+    models = Student
+    form = StudentUpdateForm
+
+# details of a course
+def CourseDetail(DetailView):
     model = Course
 
-# simply returns a page showing a program
-# @login_required
-def detail_program(DetailView):
+# details of a program
+def ProgramDetail(DetailView):
     model = Program
 
-def detail_trajectory(LoginRequiredMixin, DetailView):
+# details of a program
+def TrajectoryDetail(LoginRequiredMixin, DetailView):
     model = Trajectory
 
-def list_trajectory(LoginRequiredMixin, ListView):
+# lists all of  your trajectories
+def TrajectoryList(LoginRequiredMixin, ListView):
     model = Trajectory
+    # needs to make it so it's your trajectory
+    # or eventually, public as well
 
-def list_program(ListView):
+# lists all programs
+def ProgramList(ListView):
     model = Program
-
-# simply displays a page for an individual trajectory, (along with edit links)
-# @login_required
-# actually needs more than one slug, the one for the user
