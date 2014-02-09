@@ -6,6 +6,7 @@ from trajectories.models import Trajectory
 
 from haystack.forms import SearchForm
 
+# searching
 class StyledSeachForm( SearchForm ):
     q = forms.CharField(
         required = False,
@@ -17,21 +18,9 @@ class StyledSeachForm( SearchForm ):
         }),
     )
 
-# class SelectYourCourses( ModelForm ):
+# build a trajectory
 
-    # needs to connect with a Student's completedCourses field
-
-    # class Meta:
-        # models = Course
-
-	# widgets = {
-	    # department abbreviation
-
-	    # course number
-
-	    # name
-        # }
-
+# create a new trajectory
 class NewTrajectoryForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
 
@@ -59,9 +48,6 @@ class NewTrajectoryForm( ModelForm ):
                 'placeholder' = 'Software Engineering',
             }),
         }
-
-# class CreateTrajectoryForm ( ModelForm ):
-    # def __init__(self, *args, **kwargs):
 
 # the user selects the courses they are allowed to take but
 # this needs to be presented in a dramatically different way than
@@ -91,7 +77,7 @@ class NewTrajectoryForm( ModelForm ):
             }),
         }
 
-class StudentInfoForm( ModelForm ):
+class StudentEditInfoForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
 
     class Meta:
@@ -122,3 +108,19 @@ class StudentInfoForm( ModelForm ):
                 'placeholder' : 'What year are you?'
             }),
         }
+
+# class SelectYourCourses( ModelForm ):
+
+    # needs to connect with a Student's completedCourses field
+
+    # class Meta:
+        # models = Course
+
+	# widgets = {
+	    # department abbreviation
+
+	    # course number
+
+	    # name
+        # }
+
