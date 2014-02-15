@@ -37,6 +37,10 @@ def nextCourses(coursesTaken, remainingReqCourses):
 def getGenEds(programs, isHonors):
 # this algorithm sucks because if there's a change to the number of allowed
 # majors then this will break
+
+    # (fix this obvi)
+    return True
+
 def getGenEds(programs, isHonors):
     """ returns the gen eds a student has to take based on their selected
         programs """
@@ -98,4 +102,3 @@ def enoughCourses(coursesTaken, degreeCreditsReqNum):
         return True
     else:
         return False
-
