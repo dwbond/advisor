@@ -6,7 +6,6 @@ from model_utils.models import TimeStampedModel
 from autoslug import AutoSlugField 
 
 class Course(TimeStampedModel):
-
     name = models.CharField(max_length = 150)
     courseSlug = AutoSlugField(populate_from='name', unique=True)
 
@@ -49,7 +48,6 @@ class Course(TimeStampedModel):
 
 # gen eds are coursecollections in programs
 class CourseCollection(TimeStampedModel):
-
     name = models.CharField(max_length = 150)
 
     # a number of courses
@@ -68,20 +66,22 @@ class CourseCollection(TimeStampedModel):
     isCompleted = models.BooleanField(False)
 
 class Program(TimeStampedModel):
-
     name = models.CharField(max_length = 150)
+    # change populate_from
     slug = AutoSlugField(populate_from='name',unique=True)
 
     # courseCollections
     courseReqs =  models.ManyToManyField('CourseCollection',)
-    # is BA, BS, Honors
-    # all majors must take a gened program, null for minors, geneds
-
+    
     # catalog year for the Program
     catalogYear = models.DateField()
     
-    # if all coursecollections' and gened requirements are satisfied, then the
+    # if all coursecollections and gened requirements are satisfied, then the
     # program is completed
+    # FINISH THIS
+    def isCompleted(courseReqs):
+        return True
+
     isCompleted = models.BooleanField(False)
 
     class Meta:
@@ -108,7 +108,6 @@ class GenEd(Program):
     pass
 
 class Trajectory(TimeStampedModel):
-
     name = models.CharField(max_length = 150)
     slug = AutoSlugField(populate_from='name',unique=True)
     owner = models.ForeignKey(User)
@@ -140,7 +139,6 @@ class Trajectory(TimeStampedModel):
 
 # should inherit from the standard Django User Model
 class Student(models.Model):
-
     user = models.OneToOneField(User)
     # does User have a slug field?
 
@@ -170,4 +168,3 @@ def create_user_profile(sender, instance, created, **kwargs):
         Student.objects.create(user=instance)
 
 post_save.connect(create_user_profile, sender=User)
-

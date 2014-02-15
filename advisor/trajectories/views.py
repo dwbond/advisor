@@ -9,7 +9,8 @@ from braces.views import LoginRequiredMixin
 # create a new trajectory
 def newTrajectory(LoginRequiredMixin, CreateView):
     model = Trajectory
-    form = CreateTrajectoryForm
+    form = NewMajorForm
+    form = NewMinorForm
 
 # build the trajectory
 def buildTrajectory(LoginRequiredMixin, UpdateView):
@@ -40,7 +41,7 @@ def trajectoryDetail(LoginRequiredMixin, DetailView):
 # lists all of  your trajectories
 def trajectoryList(LoginRequiredMixin, ListView):
     model = Trajectory
-    # needs to make it so it's your trajectory
+    # needs to make it so it's only your trajectories
     # or eventually, public as well
 
 # lists all programs
