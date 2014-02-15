@@ -2,24 +2,38 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from trajectories.views import course, student, trajectory, new, create
+from trajectories.views import newTrajectory, buildTrajectory, studentDetail, studentUpdate, courseDetail, programDetail, programDetail, trajectoryDetail, trajectoryList, programList
 
 urlpatterns = patterns('',
     
-    # course
-    url(r'^course/(?P<courseSlug>\w+)/$', course, name = 'course'),
+    ### detail pages ##
 
     # student's page
-    url(r'^(?P<username>\w+)/$', student, name = 'student'),
+    url(r'^(?P<username>\w+)/$', studentDetail, name = 'studentDetail'),
+    # course
+    url(r'^course/(?P<courseSlug>\w+)/$', courseDetail, name = 'courseDetail'),
+    # program
+    url(r'^program/(?P<programSlug>\w+)/$', programDetail, name = 'programDetail'),
+    # trajectory
+    url(r'^(?P<username>\w+)/(?P<trajectorySlug>\w+)$', trajectoryDetail, name = 'trajectoryDetail'),
+  
+    ### list pages ###
 
-    # single trajectory page
-    url(r'^(?P<username>\w+)/(?P<trajectorySlug>\w+)$', trajectory, name = 'trajectory'),
+    # trajectories
+    url(r'^(?P<username>\w+)/trajectories/$', trajectoryList, name = 'trajectoryList'),
+    
+    # programs
+    url(r'^programs/$', programList, name = 'programList'),
 
-    # a new trajectory
-    # url(r'^user/(?P<username>\w+)/new/$', 'new', name = 'new'),
-    url(r'^new/$', new, name = 'new'),
+    ### create pages ###
+    
+    # trajectory
+    url(r'^new/$', newTrajectory, name = 'newTrajectory'),
 
-    # creating the trajectory
-    # url(r'^user/(?P<username>\w+)/create/$', 'create', name = 'create'),
-    url(r'^create/$', create, name = 'create'),
+    ### update pages ###
+
+    # trajectory
+    url(r'^(?P<username>\w+)/build/(?P<trajectorySlug>)$', buildTrajectory, name = 'buildTrajectory'),
+    # student
+    url(r'(?P<username>\w+)/update$', studentUpdate, name = 'studentUpdate'),
 )
