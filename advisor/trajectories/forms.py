@@ -18,32 +18,45 @@ class StyledSeachForm( SearchForm ):
         }),
     )
 
-# create a new trajectory
-class NewTrajectoryForm( ModelForm ):
-    # def __init__(self, *args, **kwargs):
-
+# pick a new Major
+# ModelForms fill out existing Models
+class NewMajorForm( ModelForm ):
     class Meta:
-        model = Program
+        model = Major
         fields = ('name',
         )
-        exclude = ('courseReqs', 'created', 'last_modified', 'catalogYear',
-	    'isCompleted', 'programType', 'degreeType',
+        # does this work with the cbvs?
+        exclude = ('slug', 'courseReqs', 'catalogYear', 'isCompleted',
+            'degreeType',
         )
         labels = {
-            'name' : 'Program(s)'
-            'name' : 'Minor(s)'
+            'name' : 'Major(s)'
         }
         widgets = {
-            # I know you can't actually have it assigned twice...
 	    # name of major(s)
             'name' : TextInput(attrs={
 	        'class' : 'form-control',
 		'placeholder' : 'Government and International Politics',
 	    }),
+        }
+
+# pick a new Minor
+class NewMinorForm( ModelForm ):
+    class Meta:
+        model = Minor
+        fields = ('name',
+        )
+        exclude = ('slug', 'courseReqs', 'catalogYear', 'isCompleted',
+            'degreeType',
+        )
+        labels = {
+            'name' : 'Minor(s)'
+        }
+        widgets = {
             # name of minor(s)
             'name' : TextInput(attrs={
                 'class' : 'form-control',
-                'placeholder' = 'Software Engineering',
+                'placeholder' : 'Software Engineering',
             }),
         }
 
