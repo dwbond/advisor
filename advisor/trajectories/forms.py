@@ -18,14 +18,8 @@ class StyledSeachForm( SearchForm ):
         }),
     )
 
-# build a trajectory
-
-<<<<<<< HEAD
 # create a new trajectory
 class NewTrajectoryForm( ModelForm ):
-=======
-class CreatePersonalProgramListForm( ModelForm ):
->>>>>>> 56146d0bc3dfccfc13208302c365932288fe58be
     # def __init__(self, *args, **kwargs):
 
     class Meta:
@@ -56,6 +50,11 @@ class CreatePersonalProgramListForm( ModelForm ):
 # the user selects the courses they are allowed to take but
 # this needs to be presented in a dramatically different way than
 # just some silly dropdown
+
+# build a trajectory
+class BuildTrajectoryForm( ModelForm ):
+    # def __init__(self, *args, **kwargs):
+
     class Meta:
         model = Trajectory
         fields = ('name', 'courses',
@@ -80,10 +79,8 @@ class CreatePersonalProgramListForm( ModelForm ):
                 'placeholder' = 'Name Your Trajectory',
             }),
         }
-class BuildTrajectoryForm(ModelForm):
-    model = Trajectory
 
-class StudentEditInfoForm( ModelForm ):
+class StudentUpdateForm( ModelForm ):
     # def __init__(self, *args, **kwargs):
 
     class Meta:
@@ -115,18 +112,4 @@ class StudentEditInfoForm( ModelForm ):
             }),
         }
 
-# class SelectYourCourses( ModelForm ):
-
-    # needs to connect with a Student's completedCourses field
-
-    # class Meta:
-        # models = Course
-
-	# widgets = {
-	    # department abbreviation
-
-	    # course number
-
-	    # name
-        # }
-
+# def SelectCoursesForm ?

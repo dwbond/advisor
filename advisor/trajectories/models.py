@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
-from model_uitls.models import TimeStampedModel
+from model_utils.models import TimeStampedModel
 from autoslug import AutoSlugField 
 
 class Course(TimeStampedModel):
@@ -85,7 +85,6 @@ class Program(TimeStampedModel):
     isCompleted = models.BooleanField(False)
 
     class Meta:
-        abstract = True
         ordering = ('name',)
 
     def __unicode__(self):
@@ -107,6 +106,37 @@ class Minor(Program):
 
 class GenEd(Program):
     pass
+
+class Trajectory(TimeStampedModel):
+
+    name = models.CharField(max_length = 150)
+    slug = AutoSlugField(populate_from='name',unique=True)
+    owner = models.ForeignKey(User)
+
+    # Takes courses
+    previousCourses = models.ManyToManyField('Trajectory',)
+
+    # the newly added courses for that trajectory
+    courses = models.ManyToManyField('Course',)
+
+    # def getPreviousTrajectory(Trajectory):
+        # return Trajectory
+
+    # the program(s) that this trajectory is completing
+    whichPrograms = models.ManyToManyField('Program',)
+
+    # whether or not the trajectory can be seen by others
+    isPublic = models.BooleanField()
+
+    # semesters since entering college
+    semester = models.IntegerField()
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name_plural = "trajectories"
+
+    def get_absolute_url(self):
+        return 'my-trajectories/%s/' % self.slug
 
 # should inherit from the standard Django User Model
 class Student(models.Model):
@@ -141,33 +171,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_user_profile, sender=User)
 
-class Trajectory(TimeStampedModel):
-
-    name = models.CharField(max_length = 150)
-    slug = AutoSlugField(populate_from='name',unique=True)
-    owner = models.ForeignKey(User)
-
-    # Takes courses
-    previousCourses = models.ManyToManyField('Trajectory',)
-
-    # the newly added courses for that trajectory
-    courses = models.ManyToManyField('Course',)
-
-    # def getPreviousTrajectory(Trajectory):
-        # return Trajectory
-
-    # the program(s) that this trajectory is completing
-    whichPrograms = models.ManyToManyField('Program',)
-
-    # whether or not the trajectory can be seen by others
-    isPublic = models.BooleanField()
-
-    # semesters since entering college
-    semester = models.IntegerField()
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name_plural = "trajectories"
-
-    def get_absolute_url(self):
-        return 'my-trajectories/%s/' % self.slug
