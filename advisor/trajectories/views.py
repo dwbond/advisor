@@ -12,10 +12,23 @@ def newTrajectory(LoginRequiredMixin, CreateView):
     form = NewMajorForm
     form = NewMinorForm
 
+    # form processing
+    # ensure that the student does not take more than two majors and three minors-- fix 'maxProgramsAllowed' in utils
+    # PROGRAM: check if the student is Honors, and overwrite default degreeType to relevant Honors option -- fix 'getGenEds' in utils 
+    # TRAJECTORY: with the name of the user and the name of the majors and minors, create a name
+    # TRAJECTORY: create the slug from the name of the majors and minors
+    # TRAJECTORY: set owner as user, and pull user's previous trajectories
+    # TRAJECTORY: set whichPrograms to the programs passed in
+    # TRAJECTORY: set semester as user's current semester
+    # (?) where is catalogYear being set?
+    # save and pass this information to buildTrajectory
+
 # build the trajectory
 def buildTrajectory(LoginRequiredMixin, UpdateView):
     model = Trajectory
     form = BuildTrajectoryForm
+
+    # form processing
 
 # student's page; shows saved trajectories
 def studentDetail(LoginRequiredMixin, DetailView):
