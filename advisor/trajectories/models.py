@@ -120,7 +120,7 @@ class Trajectory(TimeStampedModel):
     owner = models.ForeignKey(User)
 
     # Takes courses, CAN BE EMPTY- FIX
-    previousCourses = models.ManyToManyField('Trajectory',)
+    completedCourses = models.ManyToManyField('Trajectory',)
 
     # the newly added courses for that trajectory, CAN BE EMPTY-- FIX
     courses = models.ManyToManyField('Course',)
