@@ -108,6 +108,8 @@ class GenEd(Program):
     pass
 
 class Trajectory(TimeStampedModel):
+    # This should be generated automatically, e.g. Daniel's Music Theory
+    # and Biology Minor v. 4 Trajectory
     name = models.CharField(max_length = 150)
     slug = AutoSlugField(populate_from='name',unique=True)
     owner = models.ForeignKey(User)
@@ -140,9 +142,8 @@ class Trajectory(TimeStampedModel):
 # should inherit from the standard Django User Model
 class Student(models.Model):
     user = models.OneToOneField(User)
-    # does User have a slug field?
-
     # aka username, etc should all be here
+    # does User have a slug field?
     
     # all of the student's trajectories
     trajectories = models.ManyToManyField('Trajectory', null=True)

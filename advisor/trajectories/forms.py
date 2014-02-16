@@ -59,36 +59,31 @@ class NewMinorForm( ModelForm ):
             }),
         }
 
-# the user selects the courses they are allowed to take but
-# this needs to be presented in a dramatically different way than
-# just some silly dropdown
-
 # build a trajectory
 class BuildTrajectoryForm( ModelForm ):
-    # def __init__(self, *args, **kwargs):
-
     class Meta:
         model = Trajectory
         fields = ('name', 'courses',
         )
-        exclude = ('trajectorySlug', 'previousCourses', 'whichPrograms',
+        exclude = ('slug', 'owner', 'previousCourses', 'whichPrograms',
         'isPublic', 'semester'
         )
-        labels = (
+        labels = {
         # the courses need to be sorted by their associated program, so idk labels
-        )
+            'name' : 'Trajectory Name',
+            'courses' : 'Courses You Can Take This Semester',
+        }
         widgets = {
             # name of the trajectory
+            # this should be generated automatically, e.g.
+            # Daniel's Music Theory and Biology Minor v. 4 Trajectory
             'name' : forms.TextInput(attrs={
                 'class' : 'form-control',
-                # this shouldn't change often
                 'placeholder' = 'Name Your Trajectory',
             }),
-            # course names... this isn't probably right
-            # users select and save tiles...
-            'name' : forms.TextInput(attrs={
+            # users select and save tiles... don't use the widget
+            'courses' : forms.SelectMultiple(attrs={
                 'class' : 'form-control',
-                'placeholder' = 'Name Your Trajectory',
             }),
         }
 
@@ -105,7 +100,6 @@ class StudentUpdateForm( ModelForm ):
             'semester' : 'Semester',
         }
         widgets = {
-            # this should be done above, but I don't know how that works with the models ^^^
             'completedCourses' : forms.SelectMultiple(attrs={
                 'class' : 'form-control',
             #    'placeholder' : 'Type in courses you\'ve taken',
