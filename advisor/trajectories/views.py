@@ -11,8 +11,14 @@ def newTrajectory(LoginRequiredMixin, CreateView):
     model = Trajectory
     form = NewMajorForm
     form = NewMinorForm
+    template_name = 'new.html'
 
-    # form processing
+    def get(self, request, *args, **kwargs):
+        return False
+
+    def post(self, request, *args, **kwargs):
+        return False
+
     # ensure that the student does not take more than two majors and three minors-- fix 'maxProgramsAllowed' in utils
     # PROGRAM: check if the student is Honors, and overwrite default degreeType to relevant Honors option -- fix 'getGenEds' in utils 
     # TRAJECTORY: with the name of the user and the name of the majors and minors, create a name
@@ -29,8 +35,14 @@ def newTrajectory(LoginRequiredMixin, CreateView):
 def buildTrajectory(LoginRequiredMixin, UpdateView):
     model = Trajectory
     form = BuildTrajectoryForm
+    template_name = 'build.html'
 
-    # form processing
+    def get(self, request, *args, **kwargs):
+        return False
+
+    def post(self, request, *args, **kwargs):
+        return False
+
     # rewrite utils as necessary
     # -- if all CourseCollections of a Program are completed, mark program as completed
     # BLEH-- I feel like the original logic in utils might be a bit better: figure out what I was thinking -->> get all courses that have prereqs in the same list of already completed courses (lightbulb?), and if there are coreqs, that course must also have its prereqs fulfilled
@@ -51,13 +63,19 @@ def buildTrajectory(LoginRequiredMixin, UpdateView):
 # student's page; shows saved trajectories
 def studentDetail(LoginRequiredMixin, DetailView):
     model = Student
+    template_name = 'student.html'
 
 # student can edit their information, such as previous classes or isHonors
 def studentUpdate(LoginRequiredMixin, UpdateView):
     models = Student
     form = StudentUpdateForm
+    template_name = 'student-manage.html'
 
-    # form processing
+    def get(self, request, *args, **kwargs):
+        return False
+
+    def post(self, request, *args, **kwargs):
+        return False
 
     # note: show merely the names of the trajectories-- pulling up the end nodes shouldn't actually be necessary, as thought earlier
     # save the new information
@@ -66,21 +84,26 @@ def studentUpdate(LoginRequiredMixin, UpdateView):
 # details of a course
 def courseDetail(DetailView):
     model = Course
+    template_name = 'course.html'
 
 # details of a program
 def programDetail(DetailView):
     model = Program
+    template_name = 'program.html'
 
 # details of a program
 def trajectoryDetail(LoginRequiredMixin, DetailView):
     model = Trajectory
+    template_name = 'trajectory.html'
 
 # lists all of  your trajectories
 def trajectoryList(LoginRequiredMixin, ListView):
     model = Trajectory
+    template_name = 'trajectories-all.html'
     # needs to make it so it's only your trajectories
     # or eventually, public as well
 
 # lists all programs
 def programList(ListView):
     model = Program
+    template_name = 'programs-all.html'
