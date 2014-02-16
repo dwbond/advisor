@@ -232,6 +232,7 @@ be editable)
 
 ### Pipe Dreams
 
+* Show a checklist on the side, knocking off CourseCollections
 * Making trajectories "public" within the system, so that they can be shared
 with other students.
 * Making trajectories "public" outside of the system, so that they can be shared
