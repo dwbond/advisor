@@ -1,7 +1,6 @@
 from django import forms
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.forms import ModelForm, Select
 from trajectories.models import Trajectory
 
 from haystack.forms import SearchForm
@@ -34,7 +33,7 @@ class NewMajorForm( ModelForm ):
         }
         widgets = {
 	    # name of major(s)
-            'name' : TextInput(attrs={
+            'name' : forms.TextInput(attrs={
 	        'class' : 'form-control',
 		'placeholder' : 'Government and International Politics',
 	    }),
@@ -54,7 +53,7 @@ class NewMinorForm( ModelForm ):
         }
         widgets = {
             # name of minor(s)
-            'name' : TextInput(attrs={
+            'name' : forms.TextInput(attrs={
                 'class' : 'form-control',
                 'placeholder' : 'Software Engineering',
             }),
@@ -80,22 +79,20 @@ class BuildTrajectoryForm( ModelForm ):
         )
         widgets = {
             # name of the trajectory
-            'name' : TextInput(attrs={
+            'name' : forms.TextInput(attrs={
                 'class' : 'form-control',
                 # this shouldn't change often
                 'placeholder' = 'Name Your Trajectory',
             }),
             # course names... this isn't probably right
             # users select and save tiles...
-            'name' : TextInput(attrs={
+            'name' : forms.TextInput(attrs={
                 'class' : 'form-control',
                 'placeholder' = 'Name Your Trajectory',
             }),
         }
 
 class StudentUpdateForm( ModelForm ):
-    # def __init__(self, *args, **kwargs):
-
     class Meta:
         model = Student
         fields = ('completedCourses', 'isHonors', 'semester',
@@ -109,20 +106,17 @@ class StudentUpdateForm( ModelForm ):
         }
         widgets = {
             # this should be done above, but I don't know how that works with the models ^^^
-            'completedCourses' : TextInput(attrs={
+            'completedCourses' : forms.SelectMultiple(attrs={
                 'class' : 'form-control',
-                'placeholder' : 'Type in courses you\'ve taken',
+            #    'placeholder' : 'Type in courses you\'ve taken',
             }),
             # is the student honors?
-            'isHonors' : CheckboxInput(attrs={
+            'isHonors' : forms.CheckboxInput(attrs={
                 'class' : 'form-control',
             }),
-
             # semester
-            'semester' : TextInput(attrs={
+            'semester' : forms.TextInput(attrs={
                 'class' : 'form-control',
                 'placeholder' : 'What year are you?'
             }),
         }
-
-# def SelectCoursesForm ?
