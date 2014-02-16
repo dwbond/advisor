@@ -17,6 +17,8 @@ class StyledSeachForm( SearchForm ):
         }),
     )
 
+# WHERE ARE WE SETTING THE CATALOG YEAR?
+
 # pick a new Major
 # ModelForms fill out existing Models
 class NewMajorForm( ModelForm ):
@@ -29,7 +31,7 @@ class NewMajorForm( ModelForm ):
             'degreeType',
         )
         labels = {
-            'name' : 'Major(s)'
+            'name' : 'Major(s)',
         }
         widgets = {
 	    # name of major(s)
@@ -49,7 +51,7 @@ class NewMinorForm( ModelForm ):
             'degreeType',
         )
         labels = {
-            'name' : 'Minor(s)'
+            'name' : 'Minor(s)',
         }
         widgets = {
             # name of minor(s)
