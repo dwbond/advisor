@@ -6,6 +6,7 @@ def remainingReqCourses(requiredCourses, coursesTaken):
     for course in requiredCourses:
         if course not in coursesTaken:
             remainingReqCourses.append(course)
+
 def allPrereqCoreq(course, remainingReqCourses):
     """ returns required courses that have course as a prereq or coreq """
     allPrereqCoreq = []
