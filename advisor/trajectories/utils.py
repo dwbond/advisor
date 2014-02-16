@@ -32,8 +32,7 @@ def nextCourses(coursesTaken, remainingReqCourses):
              possibility = allPrereqCoreq(course, remainingReqCourses)
              nextCourses.append(possibility)
      return nextCourses
-# this algorithm sucks because if there's a change to the number of allowed
-# majors then this will break
+
 def getGenEds(programs, isHonors):
 # this algorithm sucks because if there's a change to the number of allowed
 # majors then this will break
@@ -78,6 +77,7 @@ def fulfilledReq(coursesTaken, courseCollection, numReq):
             if finished >= numReq:
                 courseCollection.isCompleted = True
                 break
+
 def topTrajectories(trajectories):
     """ Only shows the uppermost level of trajectories--
         there's no reason that *all* of the previously loaded classes

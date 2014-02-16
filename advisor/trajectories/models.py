@@ -100,11 +100,16 @@ class Major(Program):
 
 class Minor(Program):
     major = models.ForeignKey('Major') 
-
     class Meta:
         pass
 
 class GenEd(Program):
+    # set to B.A. or B.S. by default
+    # Options
+    # B.A.
+    # B.S.
+    # Honors Science
+    # Honors Liberal Arts
     pass
 
 class Trajectory(TimeStampedModel):
@@ -114,10 +119,10 @@ class Trajectory(TimeStampedModel):
     slug = AutoSlugField(populate_from='name',unique=True)
     owner = models.ForeignKey(User)
 
-    # Takes courses
+    # Takes courses, CAN BE EMPTY- FIX
     previousCourses = models.ManyToManyField('Trajectory',)
 
-    # the newly added courses for that trajectory
+    # the newly added courses for that trajectory, CAN BE EMPTY-- FIX
     courses = models.ManyToManyField('Course',)
 
     # def getPreviousTrajectory(Trajectory):
