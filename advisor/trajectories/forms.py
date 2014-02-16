@@ -67,7 +67,7 @@ class BuildTrajectoryForm( ModelForm ):
         model = Trajectory
         fields = ('name', 'courses',
         )
-        exclude = ('slug', 'owner', 'previousCourses', 'whichPrograms',
+        exclude = ('slug', 'owner', 'completedCourses', 'whichPrograms',
         'isPublic', 'semester'
         )
         labels = {
