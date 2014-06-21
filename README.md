@@ -32,6 +32,8 @@ To get started, you'll need the following installed:
 * [Pip](http://www.pip-installer.org/en/latest/installing.html)
 * [virtualenv](http://www.virtualenv.org/en/latest/index.html#installation)
 
+If you are running Linux, there are several packages you need to install to use python-ldap. On Ubuntu, these are libldap2-dev ldap-utils and  libsasl2-dev. 
+
 Type the following commands in your terminal (if you're on Windows, 
 [Cygwin](http://www.cygwin.com/) is recommended, or you can install a 
 [virtual machine](https://www.virtualbox.org/wiki/Downloads) and install a 
